@@ -22,6 +22,16 @@ module.exports = class Purge extends Command {
         }
 
         const messagesToDelete = parseInt(args[0]);
+        if (Number.isNaN(messagesToDelete)) {
+            msg.reply(formatString(locale.NaN, args[0]));
+            return true;
+        }
+
+        if (messagesToDelete < 0) {
+            msg.reply(locale.onlyPositive);
+            return true;
+        }
+
         if (messagesToDelete > 100) {
             msg.reply(
                 formatString(locale.outOfRange, "100")

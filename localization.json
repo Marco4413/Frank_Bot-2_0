@@ -5,6 +5,8 @@
     "purge": {
         "succesful": "{0} Messages were deleted!",
         "outOfRange": "Only {0} Messages can be delted at once.",
+        "NaN": "\"{0}\" isn't a valid number.",
+        "onlyPositive": "Can't delete a negative ammount of messages.",
         "noPerms": "You must have manage messages permission to use this command."
     },
     "shortcuts": {
