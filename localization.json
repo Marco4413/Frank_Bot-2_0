@@ -4,7 +4,8 @@
     },
     "purge": {
         "succesful": "{0} Messages were deleted!",
-        "outOfRange": "Only {0} Messages can be delted at once."
+        "outOfRange": "Only {0} Messages can be delted at once.",
+        "noPerms": "You must have manage messages permission to use this command."
     },
     "shortcuts": {
         "on": "Shortcuts can now be used on your guild!",

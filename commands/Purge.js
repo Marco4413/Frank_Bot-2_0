@@ -16,6 +16,11 @@ module.exports = class Purge extends Command {
      * @returns {Promise<Boolean>} Whether or not the command ran succesfully
      */
     async execute(args, msg, locale, canShortcut) {
+        if (!msg.member.hasPermission("MANAGE_MESSAGES")) {
+            msg.reply(locale.noPerms);
+            return true;
+        }
+
         const messagesToDelete = parseInt(args[0]);
         if (messagesToDelete > 100) {
             msg.reply(
