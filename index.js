@@ -21,7 +21,7 @@ async function main() {
         Logger.info("There was an error while authenticating database.");
         Logger.debug(err);
     }
-    await database.sync();
+    await database.sync({ "alter": true });
     Client.login(process.env.token);
 }
 
