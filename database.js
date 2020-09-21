@@ -1,5 +1,5 @@
 
-const { Sequelize, DataTypes } = require("sequelize");
+const { Sequelize, DataTypes, Model } = require("sequelize");
 const Logger = require("./logging.js");
 
 const database = new Sequelize(process.env.db_name, process.env.db_username, process.env.db_password, {
@@ -9,7 +9,8 @@ const database = new Sequelize(process.env.db_name, process.env.db_username, pro
     "logging": Logger.debug
 });
 
-const Guild = database.define("Guild", {
+class Guild extends Model {}
+Guild.init({
     "id": {
         "primaryKey": true,
         "type": DataTypes.STRING,
@@ -19,8 +20,16 @@ const Guild = database.define("Guild", {
         "type": DataTypes.STRING,
         "allowNull": false,
         "defaultValue": "!"
+    },
+    "shortcuts": {
+        "type": DataTypes.BOOLEAN,
+        "allowNull": false,
+        "defaultValue": true
     }
-}, { "timestamps": true });
+}, {
+    "sequelize": database,
+    "timestamps": true
+});
 
 exports.database = database;
 exports.Guild = Guild;
