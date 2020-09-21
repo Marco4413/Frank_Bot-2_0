@@ -9,11 +9,13 @@ module.exports = class Purge extends Command {
     }
 
     /**
-     * @param {Array<String>} args
-     * @param {discord.Message} msg
-     * @param {Object} locale
+     * @param {Array<String>} args - Command's arguments
+     * @param {discord.Message} msg - The message that triggered the command
+     * @param {Object} locale - Command's locale
+     * @param {Boolean} canShortcut - Whether or not shortcuts can be used
+     * @returns {Promise<Boolean>} Whether or not the command ran succesfully
      */
-    async execute(args, msg, locale) {
+    async execute(args, msg, locale, canShortcut) {
         const messagesToDelete = parseInt(args[0]);
         if (messagesToDelete > 100) {
             msg.reply(
