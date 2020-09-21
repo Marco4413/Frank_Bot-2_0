@@ -1,0 +1,7 @@
+{
+    "play": {
+        "now": "Now playing {0}",
+        "invalidVideo": "Couldn't find the specified video the URL/ID might be invalid.",
+        "notJoinable": "Couldn't join your voice channel, please use one that I can join."
+    }
+}
