@@ -5,7 +5,7 @@ const { formatString } = require("../utils.js");
 
 module.exports = class Purge extends Command {
     constructor() {
-        super("purge");
+        super("purge", "p");
     }
 
     /**

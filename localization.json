@@ -1,4 +1,11 @@
 {
+    "help": {
+        "defaultMessage": "Test"
+    },
+    "purge": {
+        "succesful": "{0} Messages were deleted!",
+        "outOfRange": "Only {0} Messages can be delted at once."
+    },
     "play": {
         "now": "Now playing {0}",
         "invalidVideo": "Couldn't find the specified video the URL/ID might be invalid.",

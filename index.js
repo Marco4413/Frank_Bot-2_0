@@ -52,7 +52,7 @@ Client.on("message", async msg => {
         const commands = formattedMessageContent.split(" ");
 
         for (let i = 0; i < Commands.length; i++) {
-            if (await Commands[i].checkAndRun(commands, msg, localization)) {
+            if (await Commands[i].checkAndRun(commands, false, msg, localization)) {
                 break;
             }
         }
