@@ -1,4 +1,6 @@
 
+const discord = require("discord.js");
+
 /**
  * Formats the specified string replacing all {n} where n is a number with the corresponding argument
  * @param {String} str - The string to format
@@ -11,3 +13,14 @@ exports.formatString = (str, ...formats) => {
     });
     return str;
 }
+
+/**
+ * 
+ * @param {Function} sender
+ * @param {String} permission 
+ * @param {Object} locale 
+ */
+exports.missingPerm = (sender, permission, locale) => {
+    sender(this.formatString(locale.missingPerm, locale.perms[permission]));
+}
+

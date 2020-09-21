@@ -31,11 +31,18 @@ class Command {
      * @param {Boolean} canShortcut - Passed to this.check
      * @param {discord.Message} msg - The message that's going to be passed to this.execute
      * @param {Object} locale - The locale that's going to be passed to this.execute
+     * @param {Object} locale.command - Command's locale
+     * @param {Object} locale.common - Common locale
      * @returns {Promise<Boolean>} Whether or not the command ran succesfully
      */
     async checkAndRun(commands, canShortcut, msg, locale) {
         if (this.check(commands, canShortcut)) {
-            return await this.execute(commands.slice(1), msg, locale[this.name] === undefined ? locale : locale[this.name], canShortcut);
+            return await this.execute(
+                commands.slice(1),
+                msg,
+                locale.command[this.name] === undefined ? locale : { "command": locale.command[this.name], "common": locale.common },
+                canShortcut
+            );
         }
         return false;
     }
@@ -44,7 +51,10 @@ class Command {
      * By default it runs the checkAndRun function on all subcommands though it should be overridden to add functionality
      * @param {Array<String>} args - Command arguments
      * @param {discord.Message} msg - The message that triggered the command
-     * @param {Object} locale - The command's locale
+     * @param {Object} locale - Localization
+     * @param {Object} locale.command - Command's locale
+     * @param {Object} locale.common - Common locale
+     * @param {Boolean} canShortcut - Whether or not shortcuts can be used
      * @returns {Promise<Boolean>} Whether or not the command was executed succesfully
      */
     async execute(args, msg, locale, canShortcut) {

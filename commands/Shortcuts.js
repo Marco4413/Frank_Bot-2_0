@@ -1,7 +1,7 @@
 const discord = require("discord.js");
 const Command = require("./command.js");
 const db = require("../database.js");
-const { formatString } = require("../utils.js");
+const { formatString, missingPerm } = require("../utils.js");
 
 module.exports = class Shortcuts extends Command {
     constructor() {
@@ -11,13 +11,15 @@ module.exports = class Shortcuts extends Command {
     /**
      * @param {Array<String>} args - Command's arguments
      * @param {discord.Message} msg - The message that triggered the command
-     * @param {Object} locale - Command's locale
+     * @param {Object} locale - Localization
+     * @param {Object} locale.command - Command's locale
+     * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
      * @returns {Promise<Boolean>} Whether or not the command ran succesfully
      */
     async execute(args, msg, locale, canShortcut) {
         if (!msg.member.hasPermission("ADMINISTRATOR")) {
-            msg.reply(locale.noPerms);
+            missingPerm(msg.reply, "ADMINISTRATOR", locale.common);
             return true;
         }
 
@@ -27,9 +29,9 @@ module.exports = class Shortcuts extends Command {
         guild.save();
 
         if (shortcutsAllowed) {
-            msg.reply(locale.off);
+            msg.reply(locale.command.off);
         } else {
-            msg.reply(locale.on);
+            msg.reply(locale.command.on);
         }
 
         return true;
