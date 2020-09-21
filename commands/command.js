@@ -6,9 +6,10 @@ class Command {
      * @param {String} name
      * @param {Array<Command>} subcommands
      */
-    constructor(name, subcommands) {
+    constructor(name, description, subcommands) {
         this.name = name;
-        this.subcommands = subcommands == undefined ? [] : subcommands;
+        this.description = description === undefined ? "" : description;
+        this.subcommands = subcommands === undefined ? [] : subcommands;
     }
 
     /**
