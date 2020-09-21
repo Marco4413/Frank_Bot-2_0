@@ -6,6 +6,11 @@
         "succesful": "{0} Messages were deleted!",
         "outOfRange": "Only {0} Messages can be delted at once."
     },
+    "shortcuts": {
+        "on": "Shortcuts can now be used on your guild!",
+        "off": "Shortcuts were disabled from your guild.",
+        "noPerms": "You must be an admin to use this command"
+    },
     "play": {
         "now": "Now playing {0}",
         "invalidVideo": "Couldn't find the specified video the URL/ID might be invalid.",
