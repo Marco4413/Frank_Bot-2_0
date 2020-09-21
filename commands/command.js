@@ -19,7 +19,7 @@ class Command {
      * Checks if the command should be ran based on the array of string specified
      * @param {Array<String>} commands - The array of strings to check for
      * @param {Boolean} canShortcut - Whether or not the command's shortcut should be checked
-     * @returns {Boolean} Whether or not the command should be ran
+     * @returns {Promise<Boolean>} Whether or not the command should be ran
      */
     check(commands, canShortcut) {
         return commands[0] == this.name || (canShortcut && this.shortcut === commands[0]);
@@ -31,7 +31,7 @@ class Command {
      * @param {Boolean} canShortcut - Passed to this.check
      * @param {discord.Message} msg - The message that's going to be passed to this.execute
      * @param {Object} locale - The locale that's going to be passed to this.execute
-     * @returns {Boolean} Whether or not the command ran succesfully
+     * @returns {Promise<Boolean>} Whether or not the command ran succesfully
      */
     async checkAndRun(commands, canShortcut, msg, locale) {
         if (this.check(commands, canShortcut)) {
@@ -45,7 +45,7 @@ class Command {
      * @param {Array<String>} args - Command arguments
      * @param {discord.Message} msg - The message that triggered the command
      * @param {Object} locale - The command's locale
-     * @returns {Boolean} Whether or not the command was executed succesfully
+     * @returns {Promise<Boolean>} Whether or not the command was executed succesfully
      */
     async execute(args, msg, locale, canShortcut) {
         for (let i = 0; i < this.subcommands.length; i++) {
