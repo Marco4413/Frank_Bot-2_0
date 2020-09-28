@@ -9,6 +9,12 @@ const database = new Sequelize(process.env.db_name, process.env.db_username, pro
     "logging": Logger.debug
 });
 
+exports.defaults = {
+    "prefix": "!",
+    "shortcuts": true,
+    "language": "en"
+}
+
 class Guild extends Model {}
 Guild.init({
     "id": {
@@ -19,12 +25,17 @@ Guild.init({
     "prefix": {
         "type": DataTypes.STRING,
         "allowNull": false,
-        "defaultValue": "!"
+        "defaultValue": exports.defaults.prefix
     },
     "shortcuts": {
         "type": DataTypes.BOOLEAN,
         "allowNull": false,
-        "defaultValue": true
+        "defaultValue": exports.defaults.shortcuts
+    },
+    "language": {
+        "type": DataTypes.STRING,
+        "allowNull": false,
+        "defaultValue": exports.defaults.language
     }
 }, {
     "sequelize": database,
