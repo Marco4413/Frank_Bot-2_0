@@ -21,7 +21,7 @@ fileContents = [
     "     * @param {Object} locale.command - Command's locale\n",
     "     * @param {Object} locale.general - Generic locale\n",
     "     * @param {Boolean} canShortcut - Whether or not shortcuts can be used\n",
-    "     * @returns {Promise<Boolean>} Whether or not the command ran succesfully\n",
+    "     * @returns {undefined}\n",
     "     */\n",
     "    async execute(args, msg, locale, canShortcut) {\n",
     "        \n",
