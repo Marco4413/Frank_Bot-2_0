@@ -13,6 +13,18 @@
             },
             "help": "Use `prefix get` to get the current prefix"
         },
+        "language": {
+            "set": {
+                "succesful": "Language was succesfully changed to \"{0}\"",
+                "same": "\"{0}\" is the same language as the current one, no need to change.",
+                "mustSpecify": "You must specify a language to change it",
+                "undefined": "\"{0}\" isn't currently supported"
+            },
+            "get": {
+                "current": "The current language is \"{0}\""
+            },
+            "help": "Use `language get` to get the current language"
+        },
         "purge": {
             "succesful": "{0} Messages were deleted!",
             "outOfRange": "Only {0} Messages can be delted at once.",
