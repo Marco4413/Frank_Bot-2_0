@@ -1,7 +1,7 @@
 const discord = require("discord.js");
-const Command = require("./command.js");
-const db = require("../database.js");
-const { formatString, missingPerm } = require("../utils.js");
+const Command = require("../command.js");
+const db = require("../../database.js");
+const { formatString, missingPerm } = require("../../utils.js");
 
 class Set extends Command {
     constructor() {
