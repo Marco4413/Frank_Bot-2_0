@@ -6,7 +6,7 @@ if (fs.existsSync(".env")) {
 }
 
 const localization = require("./localization.json");
-const { database, Guild } = require("./database.js");
+const { defaults, database, Guild } = require("./database.js");
 const discord = require("discord.js");
 const { Commands } = require("./commands/commands.js");
 const { formatString } = require("./utils.js");
@@ -51,12 +51,30 @@ Client.on("message", async msg => {
     const startsWithPrefix = msg.content.startsWith(prefix);
     const startsWithMention = msg.content.startsWith(botMention);
     if (startsWithPrefix || startsWithMention) {
+        /**
+         * @type {String}
+         */
+        const language = guildEntry.get("language");
+        let locale = localization[language];
+
+        if (locale === undefined) {
+            guildEntry.set("language", defaults.language);
+            guildEntry.save();
+
+            locale = localization[defaults.language];
+        }
+
+        const commandLocale = {
+            "command": locale,
+            "common": locale._common
+        }
+
         const noKeyword = startsWithPrefix ? msg.content.substr(prefix.length) : msg.content.substr(botMention.length);
         const formattedMessageContent = noKeyword.trim().replace(/%s%s/g, " ");
         const commands = formattedMessageContent.split(" ");
 
         for (let i = 0; i < Commands.length; i++) {
-            if (await Commands[i].checkAndRun(commands, guildEntry.get("shortcuts"), msg, { "command": localization, "common": localization._common })) {
+            if (await Commands[i].checkAndRun(commands, guildEntry.get("shortcuts"), msg, commandLocale)) {
                 break;
             }
         }

@@ -1,66 +1,68 @@
 {
-    "help": {
-        "defaultMessage": "Test"
-    },
-    "prefix": {
-        "set": {
-            "succesful": "Prefix was succesfully changed to \"{0}\"",
-            "mustSpecify": "You must specify a prefix to change it"
+    "en": {
+        "help": {
+            "defaultMessage": "Test"
         },
-        "get": {
-            "current": "The current prefix is \"{0}\""
+        "prefix": {
+            "set": {
+                "succesful": "Prefix was succesfully changed to \"{0}\"",
+                "mustSpecify": "You must specify a prefix to change it"
+            },
+            "get": {
+                "current": "The current prefix is \"{0}\""
+            },
+            "help": "Use `prefix get` to get the current prefix"
         },
-        "help": "Use `prefix get` to get the current prefix"
-    },
-    "purge": {
-        "succesful": "{0} Messages were deleted!",
-        "outOfRange": "Only {0} Messages can be delted at once.",
-        "NaN": "\"{0}\" isn't a valid number.",
-        "onlyPositive": "Can't delete a negative ammount of messages."
-    },
-    "shortcuts": {
-        "on": "Shortcuts can now be used on your guild!",
-        "off": "Shortcuts were disabled from your guild."
-    },
-    "play": {
-        "now": "Now playing {0}",
-        "invalidVideo": "Couldn't find the specified video the URL/ID might be invalid.",
-        "notJoinable": "Couldn't join your voice channel, please use one that I can join."
-    },
-    "_common": {
-        "missingPerm": "You're missing permission \"{0}\"",
-        "perms": {
-            "ADMINISTRATOR": "Administrator",
-            "CREATE_INSTANT_INVITE": "Create Instant Invite",
-            "KICK_MEMBERS": "Kick Members",
-            "BAN_MEMBERS": "Ban Members",
-            "MANAGE_CHANNELS": "Manage Channels",
-            "MANAGE_GUILD": "Manage Guild",
-            "ADD_REACTIONS": "Add Reactions",
-            "VIEW_AUDIT_LOG": "View Audit Log",
-            "PRIORITY_SPEAKER": "Priority Speaker",
-            "STREAM": "Stream",
-            "VIEW_CHANNEL": "View Channel",
-            "SEND_MESSAGES": "Send Messages",
-            "SEND_TTS_MESSAGES": "Send TTS Messages",
-            "MANAGE_MESSAGES": "Manage Messages",
-            "EMBED_LINKS": "Embed Links",
-            "ATTACH_FILES": "Attach Files",
-            "READ_MESSAGE_HISTORY": "Read Message History",
-            "MENTION_EVERYONE": "Mention Everyone",
-            "USE_EXTERNAL_EMOJIS": "Use External Emojis",
-            "VIEW_GUILD_INSIGHTS": "View Guild Insights",
-            "CONNECT": "Connect",
-            "SPEAK": "Speak",
-            "MUTE_MEMBERS": "Mute Members",
-            "DEAFEN_MEMBERS": "Deafen Members",
-            "MOVE_MEMBERS": "Move Members",
-            "USE_VAD": "Use VAD",
-            "CHANGE_NICKNAME": "Change Nickname",
-            "MANAGE_NICKNAMES": "Manage Nicknames",
-            "MANAGE_ROLES": "Manage Roles",
-            "MANAGE_WEBHOOKS": "Manage Webhooks",
-            "MANAGE_EMOJIS": "Manage Emojis"
+        "purge": {
+            "succesful": "{0} Messages were deleted!",
+            "outOfRange": "Only {0} Messages can be delted at once.",
+            "NaN": "\"{0}\" isn't a valid number.",
+            "onlyPositive": "Can't delete a negative ammount of messages."
+        },
+        "shortcuts": {
+            "on": "Shortcuts can now be used on your guild!",
+            "off": "Shortcuts were disabled from your guild."
+        },
+        "play": {
+            "now": "Now playing {0}",
+            "invalidVideo": "Couldn't find the specified video the URL/ID might be invalid.",
+            "notJoinable": "Couldn't join your voice channel, please use one that I can join."
+        },
+        "_common": {
+            "missingPerm": "You're missing permission \"{0}\"",
+            "perms": {
+                "ADMINISTRATOR": "Administrator",
+                "CREATE_INSTANT_INVITE": "Create Instant Invite",
+                "KICK_MEMBERS": "Kick Members",
+                "BAN_MEMBERS": "Ban Members",
+                "MANAGE_CHANNELS": "Manage Channels",
+                "MANAGE_GUILD": "Manage Guild",
+                "ADD_REACTIONS": "Add Reactions",
+                "VIEW_AUDIT_LOG": "View Audit Log",
+                "PRIORITY_SPEAKER": "Priority Speaker",
+                "STREAM": "Stream",
+                "VIEW_CHANNEL": "View Channel",
+                "SEND_MESSAGES": "Send Messages",
+                "SEND_TTS_MESSAGES": "Send TTS Messages",
+                "MANAGE_MESSAGES": "Manage Messages",
+                "EMBED_LINKS": "Embed Links",
+                "ATTACH_FILES": "Attach Files",
+                "READ_MESSAGE_HISTORY": "Read Message History",
+                "MENTION_EVERYONE": "Mention Everyone",
+                "USE_EXTERNAL_EMOJIS": "Use External Emojis",
+                "VIEW_GUILD_INSIGHTS": "View Guild Insights",
+                "CONNECT": "Connect",
+                "SPEAK": "Speak",
+                "MUTE_MEMBERS": "Mute Members",
+                "DEAFEN_MEMBERS": "Deafen Members",
+                "MOVE_MEMBERS": "Move Members",
+                "USE_VAD": "Use VAD",
+                "CHANGE_NICKNAME": "Change Nickname",
+                "MANAGE_NICKNAMES": "Manage Nicknames",
+                "MANAGE_ROLES": "Manage Roles",
+                "MANAGE_WEBHOOKS": "Manage Webhooks",
+                "MANAGE_EMOJIS": "Manage Emojis"
+            }
         }
     }
 }
