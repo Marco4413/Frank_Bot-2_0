@@ -15,18 +15,18 @@ class Set extends Command {
      * @param {Object} locale.command - Command's locale
      * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
-     * @returns {Promise<Boolean>} Whether or not the command ran succesfully
+     * @returns {undefined}
      */
     async execute(args, msg, locale, canShortcut) {
         if (!msg.member.hasPermission("ADMINISTRATOR")) {
             missingPerm(msg.reply, "ADMINISTRATOR", locale.common);
-            return true;
+            return;
         }
 
         const newPrefix = args[0];
         if (newPrefix === undefined) {
             msg.reply(locale.command.mustSpecify);
-            return true;
+            return;
         }
 
         const guild = await db.Guild.findByPk(msg.guild.id);
@@ -34,8 +34,6 @@ class Set extends Command {
         guild.save();
 
         msg.reply(formatString(locale.command.succesful, newPrefix));
-
-        return true;
     }
 }
 
@@ -51,14 +49,14 @@ class Get extends Command {
      * @param {Object} locale.command - Command's locale
      * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
-     * @returns {Promise<Boolean>} Whether or not the command ran succesfully
+     * @returns {undefined}
      */
     async execute(args, msg, locale, canShortcut) {
         const guild = await db.Guild.findByPk(msg.guild.id);
         const prefix = guild.get("prefix");
         msg.reply(formatString(locale.command.current, prefix));
 
-        return true;
+        return;
     }
 }
 
@@ -74,15 +72,13 @@ module.exports = class Prefix extends Command {
      * @param {Object} locale.command - Command's locale
      * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
-     * @returns {Promise<Boolean>} Whether or not the command ran succesfully
+     * @returns {undefined}
      */
     async execute(args, msg, locale, canShortcut) {
         if (await super.execute(args, msg, locale, canShortcut)) {
-            return true;
+            return;
         }
 
         msg.reply(locale.command.help);
-
-        return true;
     }
 }

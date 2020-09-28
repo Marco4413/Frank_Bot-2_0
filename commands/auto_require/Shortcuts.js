@@ -15,12 +15,12 @@ module.exports = class Shortcuts extends Command {
      * @param {Object} locale.command - Command's locale
      * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
-     * @returns {Promise<Boolean>} Whether or not the command ran succesfully
+     * @returns {undefined}
      */
     async execute(args, msg, locale, canShortcut) {
         if (!msg.member.hasPermission("ADMINISTRATOR")) {
             missingPerm(msg.reply, "ADMINISTRATOR", locale.common);
-            return true;
+            return;
         }
 
         const guild = await db.Guild.findByPk(msg.guild.id);
@@ -33,7 +33,5 @@ module.exports = class Shortcuts extends Command {
         } else {
             msg.reply(locale.command.on);
         }
-
-        return true;
     }
 }

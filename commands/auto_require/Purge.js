@@ -15,23 +15,23 @@ module.exports = class Purge extends Command {
      * @param {Object} locale.command - Command's locale
      * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
-     * @returns {Promise<Boolean>} Whether or not the command ran succesfully
+     * @returns {undefined}
      */
     async execute(args, msg, locale, canShortcut) {
         if (!msg.member.hasPermission("MANAGE_MESSAGES")) {
             missingPerm(msg.reply, "MANAGE_MESSAGES", locale.common);
-            return true;
+            return;
         }
 
         const messagesToDelete = parseInt(args[0]);
         if (Number.isNaN(messagesToDelete)) {
             msg.reply(formatString(locale.command.NaN, args[0]));
-            return true;
+            return;
         }
 
         if (messagesToDelete < 0) {
             msg.reply(locale.command.onlyPositive);
-            return true;
+            return;
         }
 
         if (messagesToDelete > 100) {
@@ -48,6 +48,5 @@ module.exports = class Purge extends Command {
                 "timeout": 2000
             });
         }
-        return true;
     }
 }
