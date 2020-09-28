@@ -12,7 +12,7 @@ const database = new Sequelize(process.env.db_name, process.env.db_username, pro
 exports.defaults = {
     "prefix": "!",
     "shortcuts": true,
-    "language": "en"
+    "language": "en-us"
 }
 
 class Guild extends Model {}
