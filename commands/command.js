@@ -33,16 +33,18 @@ class Command {
      * @param {Object} locale - The locale that's going to be passed to this.execute
      * @param {Object} locale.command - Command's locale
      * @param {Object} locale.common - Common locale
-     * @returns {Promise<Boolean>} Whether or not the command ran succesfully
+     * @returns {Promise<Boolean>} Whether or not the command was ran
      */
     async checkAndRun(commands, canShortcut, msg, locale) {
         if (this.check(commands, canShortcut)) {
-            return await this.execute(
+            await this.execute(
                 commands.slice(1),
                 msg,
                 locale.command[this.name] === undefined ? locale : { "command": locale.command[this.name], "common": locale.common },
                 canShortcut
             );
+
+            return true;
         }
         return false;
     }
@@ -55,7 +57,7 @@ class Command {
      * @param {Object} locale.command - Command's locale
      * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
-     * @returns {Promise<Boolean>} Whether or not the command was executed succesfully
+     * @returns {Promise<Boolean>} Whether or not a sub command was ran
      */
     async execute(args, msg, locale, canShortcut) {
         for (let i = 0; i < this.subcommands.length; i++) {
