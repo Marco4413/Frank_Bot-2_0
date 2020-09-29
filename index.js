@@ -37,8 +37,10 @@ Client.on("message", async msg => {
         return;
     }
 
-    const [guildEntry] = await Guild.findOrCreate({
-        "where": {},
+    const [ guildEntry ] = await Guild.findOrCreate({
+        "where": {
+            "id": msg.guild.id
+        },
         "defaults": {
             "id": msg.guild.id
         }
