@@ -82,6 +82,25 @@ class Command {
             }
         }
     }
+
+    /**
+     * Returns the command found at the end of the specified path
+     * @param {String} path - The path to follow
+     * @returns {Command} The command that was found
+     */
+    getChildByPath(path) {
+        let currentCommand = this;
+        const paths = path.split(".");
+        for (let i = 0; i < paths.length; i++) {
+            const newCommand = currentCommand.getChildByFilter({"name": paths[i]})
+            if (newCommand === undefined) {
+                return currentCommand;
+            }
+            currentCommand = newCommand;
+        }
+
+        return currentCommand;
+    }
 }
 
 module.exports = Command;
