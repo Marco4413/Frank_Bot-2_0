@@ -2,6 +2,28 @@
 const discord = require("discord.js");
 
 /**
+ * Returns the default reply as an embed to the specified message
+ * @param {discord.Message} msg - The message that the embed should be based on
+ * @returns {discord.MessageEmbed} The default embed reply to the specified message
+ */
+exports.createDefaultEmbed = (msg) => {
+    return new discord.MessageEmbed(
+        {
+            "author": {
+                "iconURL": msg.author.avatarURL(),
+                "name": msg.member.displayName
+            },
+            "color": "#0000ff",
+            "footer": {
+                "iconURL": msg.guild.me.user.avatarURL(),
+                "text": msg.guild.me.user.username
+            },
+            "timestamp": new Date()
+        }
+    );
+}
+
+/**
  * Formats the specified string replacing all {n} where n is a number with the corresponding argument
  * @param {String} str - The string to format
  * @param {...String} formats - All formats
