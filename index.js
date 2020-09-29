@@ -8,7 +8,7 @@ if (fs.existsSync(".env")) {
 const localization = require("./localization.json");
 const { defaults, database, Guild } = require("./database.js");
 const discord = require("discord.js");
-const { Commands } = require("./commands/commands.js");
+const { CommandManager } = require("./commands/commands.js");
 const { formatString } = require("./utils.js");
 const Logger = require("./logging.js");
 
@@ -67,7 +67,13 @@ Client.on("message", async msg => {
         }
 
         const commandLocale = {
+            /**
+             * @type {Object<String, String>}
+             */
             "command": locale,
+            /**
+             * @type {Object<String, String>}
+             */
             "common": locale._common
         }
 
@@ -75,11 +81,7 @@ Client.on("message", async msg => {
         const formattedMessageContent = noKeyword.trim().replace(/%s%s/g, " ");
         const commands = formattedMessageContent.split(" ");
 
-        for (let i = 0; i < Commands.length; i++) {
-            if (await Commands[i].checkAndRun(commands, guildEntry.get("shortcuts"), msg, commandLocale)) {
-                break;
-            }
-        }
+        CommandManager.execute(commands, msg, commandLocale, guildEntry.get("shortcuts"));
     }
 });
 
