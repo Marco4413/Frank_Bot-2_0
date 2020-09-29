@@ -1,7 +1,7 @@
 const discord = require("discord.js");
 const Command = require("../command.js");
 const db = require("../../database.js");
-const { formatString, missingPerm } = require("../../utils.js");
+const { createDefaultEmbed, formatString, missingPerm } = require("../../utils.js");
 
 const ytdl = require("ytdl-core-discord");
 const ytsr = require("ytsr");
@@ -145,15 +145,30 @@ class Play extends Command {
         }
 
         const info = await ytdl.getBasicInfo(link);
-        if (info.videoDetails.length_seconds > 600) {
+        if (info.videoDetails.lengthSeconds > 600) {
             msg.reply(formatString(locale.command.tooLong, "10"));
             return;
         }
 
         addToQueue(msg.guild.id, info.videoDetails.video_url);
 
+        const embed = createDefaultEmbed(msg);
+
         if (await joinAndPlay(memberVoice.channel)) {
-            msg.reply(formatString(locale.command.now, info.videoDetails.title));
+            msg.channel.send(
+                embed
+                    .setTitle(formatString(locale.command.playing, info.videoDetails.title))
+                    .setURL(link)
+                    .setThumbnail(info.videoDetails.thumbnail.thumbnails[0].url)
+                    .setDescription(
+                        formatString(
+                            "{0}\n{1}\n{2}",
+                            formatString(locale.command.author, info.videoDetails.author.name),
+                            formatString(locale.command.length, Math.round(info.videoDetails.lengthSeconds / 60)),
+                            formatString(locale.command.views, parseInt(info.videoDetails.viewCount).toLocaleString())
+                        )
+                    )
+            );
             return;
         }
 
@@ -267,7 +282,7 @@ class QueueList extends Command {
      * @returns {undefined}
      */
     async execute(args, msg, locale, canShortcut) {
-        const embed = new discord.MessageEmbed();
+        const embed = createDefaultEmbed(msg);
         embed.title = formatString(locale.command.title, msg.guild.name);
 
         const queue = getQueue(msg.guild.id, true);

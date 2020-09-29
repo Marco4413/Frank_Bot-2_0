@@ -38,7 +38,10 @@
         },
         "music": {
             "play": {
-                "now": "Now playing {0}",
+                "playing": "Now playing {0}",
+                "author": "Author: {0}",
+                "length": "Length: {0} minutes",
+                "views": "Views: {0}",
                 "onQueue": "{0} was added to queue.",
                 "tooLong": "Video is too long, it can't be more than {0} minutes long.",
                 "videoNotFound": "Couldn't find the specified video.",
