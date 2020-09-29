@@ -5,13 +5,11 @@ class Command {
     /**
      * @param {String} name - The name of the command
      * @param {String} shortcut - A shortcut for the command
-     * @param {String} description - The description of the command
      * @param {Array<Command>} subcommands - Command's subcommands
      */
-    constructor(name, shortcut, description, subcommands) {
+    constructor(name, shortcut, subcommands) {
         this.name = name;
         this.shortcut = shortcut;
-        this.description = description === undefined ? "" : description;
         this.subcommands = subcommands === undefined ? [] : subcommands;
     }
 

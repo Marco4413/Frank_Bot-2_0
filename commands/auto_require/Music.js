@@ -347,7 +347,7 @@ class QueueNow extends Command {
 // All commands related to queue management
 class Queue extends Command {
     constructor() {
-        super("queue", "q", "", [new QueueList(), new QueueClear(), new QueueNow()]);
+        super("queue", "q", [ new QueueList(), new QueueClear(), new QueueNow() ]);
     }
 
     /**
@@ -369,7 +369,7 @@ class Queue extends Command {
 // The root music command
 module.exports = class Music extends Command {
     constructor() {
-        super("music", "m", "", [new Play(), new Skip(), new Join(), new Disconnect(), new Queue()]);
+        super("music", "m", [ new Play(), new Skip(), new Join(), new Disconnect(), new Queue() ]);
     }
 
     /**

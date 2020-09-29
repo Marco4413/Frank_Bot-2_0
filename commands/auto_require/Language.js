@@ -74,7 +74,7 @@ class Get extends Command {
 
 module.exports = class Language extends Command {
     constructor() {
-        super("language", "lang", "", [new Set(), new Get()]);
+        super("language", "lang", [ new Set(), new Get() ]);
     }
 
     /**
