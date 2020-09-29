@@ -19,7 +19,7 @@ fileContents = [
     "     * @param {discord.Message} msg - The message that triggered the command\n",
     "     * @param {Object} locale - Localization\n",
     "     * @param {Object} locale.command - Command's locale\n",
-    "     * @param {Object} locale.general - Generic locale\n",
+    "     * @param {Object} locale.common - Common locale\n",
     "     * @param {Boolean} canShortcut - Whether or not shortcuts can be used\n",
     "     * @returns {undefined}\n",
     "     */\n",

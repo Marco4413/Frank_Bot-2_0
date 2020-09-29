@@ -15,7 +15,7 @@ class Set extends Command {
      * @param {discord.Message} msg - The message that triggered the command
      * @param {Object} locale - Localization
      * @param {Object} locale.command - Command's locale
-     * @param {Object} locale.general - Generic locale
+     * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
      * @returns {undefined}
      */
@@ -61,7 +61,7 @@ class Get extends Command {
      * @param {discord.Message} msg - The message that triggered the command
      * @param {Object} locale - Localization
      * @param {Object} locale.command - Command's locale
-     * @param {Object} locale.general - Generic locale
+     * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
      * @returns {undefined}
      */
@@ -82,7 +82,7 @@ module.exports = class Language extends Command {
      * @param {discord.Message} msg - The message that triggered the command
      * @param {Object} locale - Localization
      * @param {Object} locale.command - Command's locale
-     * @param {Object} locale.general - Generic locale
+     * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
      * @returns {undefined}
      */

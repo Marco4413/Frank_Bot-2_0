@@ -103,7 +103,7 @@ class Play extends Command {
      * @param {discord.Message} msg - The message that triggered the command
      * @param {Object} locale - Localization
      * @param {Object} locale.command - Command's locale
-     * @param {Object} locale.general - Generic locale
+     * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
      * @returns {undefined}
      */
@@ -172,7 +172,7 @@ class Skip extends Command {
      * @param {discord.Message} msg - The message that triggered the command
      * @param {Object} locale - Localization
      * @param {Object} locale.command - Command's locale
-     * @param {Object} locale.general - Generic locale
+     * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
      * @returns {undefined}
      */
@@ -197,7 +197,7 @@ class Join extends Command {
      * @param {discord.Message} msg - The message that triggered the command
      * @param {Object} locale - Localization
      * @param {Object} locale.command - Command's locale
-     * @param {Object} locale.general - Generic locale
+     * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
      * @returns {undefined}
      */
@@ -237,7 +237,7 @@ class Disconnect extends Command {
      * @param {discord.Message} msg - The message that triggered the command
      * @param {Object} locale - Localization
      * @param {Object} locale.command - Command's locale
-     * @param {Object} locale.general - Generic locale
+     * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
      * @returns {undefined}
      */
@@ -262,7 +262,7 @@ class QueueList extends Command {
      * @param {discord.Message} msg - The message that triggered the command
      * @param {Object} locale - Localization
      * @param {Object} locale.command - Command's locale
-     * @param {Object} locale.general - Generic locale
+     * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
      * @returns {undefined}
      */
@@ -299,7 +299,7 @@ class QueueClear extends Command {
      * @param {discord.Message} msg - The message that triggered the command
      * @param {Object} locale - Localization
      * @param {Object} locale.command - Command's locale
-     * @param {Object} locale.general - Generic locale
+     * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
      * @returns {undefined}
      */
@@ -326,7 +326,7 @@ class QueueNow extends Command {
      * @param {discord.Message} msg - The message that triggered the command
      * @param {Object} locale - Localization
      * @param {Object} locale.command - Command's locale
-     * @param {Object} locale.general - Generic locale
+     * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
      * @returns {undefined}
      */
@@ -355,7 +355,7 @@ class Queue extends Command {
      * @param {discord.Message} msg - The message that triggered the command
      * @param {Object} locale - Localization
      * @param {Object} locale.command - Command's locale
-     * @param {Object} locale.general - Generic locale
+     * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
      * @returns {undefined}
      */
@@ -377,7 +377,7 @@ module.exports = class Music extends Command {
      * @param {discord.Message} msg - The message that triggered the command
      * @param {Object} locale - Localization
      * @param {Object} locale.command - Command's locale
-     * @param {Object} locale.general - Generic locale
+     * @param {Object} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
      * @returns {undefined}
      */
