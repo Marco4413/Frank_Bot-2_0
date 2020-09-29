@@ -1,7 +1,7 @@
 const discord = require("discord.js");
 const Command = require("../command.js");
 const db = require("../../database.js");
-const { formatString, missingPerm } = require("../../utils.js");
+const { createDefaultEmbed, formatString, missingPerm } = require("../../utils.js");
 
 const localization = require("../../localization.json");
 
@@ -72,9 +72,35 @@ class Get extends Command {
     }
 }
 
+class List extends Command {
+    constructor() {
+        super("list", "l");
+    }
+
+    /**
+     * @param {Array<String>} args - Command's arguments
+     * @param {discord.Message} msg - The message that triggered the command
+     * @param {Object} locale - Localization
+     * @param {Object} locale.command - Command's locale
+     * @param {Object} locale.common - Common locale
+     * @param {Boolean} canShortcut - Whether or not shortcuts can be used
+     * @returns {undefined}
+     */
+    async execute(args, msg, locale, canShortcut) {
+        const embed = createDefaultEmbed(msg);
+        embed.setTitle(locale.command.title);
+        Object.keys(localization).forEach(
+            lang => {
+                embed.addField(lang, localization[lang].__fullName);
+            }
+        );
+        msg.channel.send(embed);
+    }
+}
+
 module.exports = class Language extends Command {
     constructor() {
-        super("language", "lang", [ new Set(), new Get() ]);
+        super("language", "lang", [ new Set(), new Get(), new List() ]);
     }
 
     /**

@@ -1,5 +1,6 @@
 {
     "en-us": {
+        "__fullName": "English US",
         "help": {
             "title": "Help (for {0}):",
             "noHelp": "There isn't an help page for this command."
@@ -23,6 +24,9 @@
             },
             "get": {
                 "current": "The current language is \"{0}\""
+            },
+            "list": {
+                "title": "All available languages:"
             },
             "help": "Use `language get` to get the current language"
         },
@@ -103,6 +107,9 @@
                     },
                     "get": {
                         "__text": "Gets the current guild's language."
+                    },
+                    "list": {
+                        "__text": "Lists all available languages."
                     }
                 },
                 "purge": {
