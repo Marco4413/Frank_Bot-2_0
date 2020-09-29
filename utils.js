@@ -24,3 +24,33 @@ exports.missingPerm = (sender, permission, locale) => {
     sender(this.formatString(locale.missingPerm, locale.perms[permission]));
 }
 
+/**
+ * Makes the first letter of a string uppercase and the remaining lowercase
+ * @param {String} str - String to capitalize
+ * @returns {String} The capitalized String
+ */
+exports.capitalize = (str) => {
+    return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
+}
+
+/**
+ * Traverses an object using the specified path (e.g. ({a: {b: 1}}, "a.b") => 1)
+ * @param {Object} object - The object to traverse
+ * @param {String} path - The path to follow
+ * @returns {any} The value found at the end of the path
+ */
+exports.traverseObject = (object, path) => {
+    let oldReference = object;
+    const paths = path.split(".");
+
+    for (let i = 0; i < paths.length; i++) {
+        const newRef = oldReference[paths[i]];
+        if (newRef === undefined) {
+            return oldReference;
+        }
+        oldReference = newRef;
+    }
+
+    return oldReference;
+}
+
