@@ -1,7 +1,7 @@
 const discord = require("discord.js");
 const Command = require("../command.js");
 const db = require("../../database.js");
-const { formatString, missingPerm, capitalize, traverseObject } = require("../../utils.js");
+const { createDefaultEmbed, formatString, missingPerm, capitalize, traverseObject } = require("../../utils.js");
 
 const { CommandManager } = require("../commands.js");
 
@@ -40,13 +40,13 @@ module.exports = class Help extends Command {
      * @returns {undefined}
      */
     async execute(args, msg, locale, canShortcut) {
-        const embed = new discord.MessageEmbed();
+        const embed = createDefaultEmbed(msg);
 
         const commandPath = args.join(".");
         const commandHelpLocale = traverseObject(locale.common.descriptions, commandPath);
         const command = CommandManager.getChildByPath(commandPath);
 
-        embed.title = formatString(locale.command.title, capitalize(command.name));
+        embed.title = formatString(locale.command.title, capitalize(command.name === CommandManager.name ? "guild" : command.name));
         if (command.subcommands <= 0) {
             embed.description = locale.command.noHelp;
         } else {
