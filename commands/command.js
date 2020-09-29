@@ -19,7 +19,7 @@ class Command {
      * Checks if the command should be ran based on the array of string specified
      * @param {Array<String>} commands - The array of strings to check for
      * @param {Boolean} canShortcut - Whether or not the command's shortcut should be checked
-     * @returns {Promise<Boolean>} Whether or not the command should be ran
+     * @returns {Boolean} Whether or not the command should be ran
      */
     check(commands, canShortcut) {
         return commands[0] == this.name || (canShortcut && this.shortcut === commands[0]);
@@ -54,8 +54,8 @@ class Command {
      * @param {Array<String>} args - Command arguments
      * @param {discord.Message} msg - The message that triggered the command
      * @param {Object} locale - Localization
-     * @param {Object} locale.command - Command's locale
-     * @param {Object} locale.common - Common locale
+     * @param {Object<String, String>} locale.command - Command's locale
+     * @param {Object<String, String>} locale.common - Common locale
      * @param {Boolean} canShortcut - Whether or not shortcuts can be used
      * @returns {Promise<Boolean>} Whether or not a sub command was ran
      */
@@ -67,6 +67,22 @@ class Command {
             }
         }
         return false;
+    }
+
+    /**
+     * Searches all subcommands and returns the one that meets the requirements
+     * @param {Object} filter - The filter
+     * @param {String} filter.name - The name of the command to search for
+     * @param {String} filter.shortcut - The shortcut of the command to search for
+     * @returns {Command} The command that was found (undefined if not found)
+     */
+    getChildByFilter(filter) {
+        for (let i = 0; i < this.subcommands.length; i++) {
+            const command = this.subcommands[i];
+            if (command.name === filter.name || command.shortcut === filter.shortcut) {
+                return command;
+            }
+        }
     }
 }
 
