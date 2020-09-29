@@ -3,7 +3,7 @@ const Command = require("./command");
 
 class CommandManager extends Command {
     constructor() {
-        super("__COMMAND_MANAGER", "__C_M", "Home to all commands", []);
+        super("__COMMAND_MANAGER", "__C_M", []);
     }
 
     /**
