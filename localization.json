@@ -1,7 +1,8 @@
 {
     "en-us": {
         "help": {
-            "defaultMessage": "Test"
+            "title": "Help (for {0}):",
+            "noHelp": "There isn't an help page for this command."
         },
         "prefix": {
             "set": {
@@ -79,6 +80,62 @@
         },
         "_common": {
             "missingPerm": "You're missing permission \"{0}\"",
+            "descriptions": {
+                "help": {
+                    "__text": "Used to get this help message."
+                },
+                "prefix": {
+                    "__text": "Used to either get or set the guild's prefix.",
+                    "set": {
+                        "__text": "Sets guild's prefix to the one specified."
+                    },
+                    "get": {
+                        "__text": "Gets the current guild's prefix."
+                    }
+                },
+                "language": {
+                    "__text": "Used to either get or set the guild's language.",
+                    "set": {
+                        "__text": "Sets guild's language to the one specified."
+                    },
+                    "get": {
+                        "__text": "Gets the current guild's language."
+                    }
+                },
+                "purge": {
+                    "__text": "Deletes the specified ammount of messages."
+                },
+                "shortcuts": {
+                    "__text": "Toggles shortcuts for this guild."
+                },
+                "music": {
+                    "__text": "Used to manage bot's music features.",
+                    "play": {
+                        "__text": "Plays the specified link/id/searched youtube video."
+                    },
+                    "skip": {
+                        "__text": "Skips the currently playing track."
+                    },
+                    "join": {
+                        "__text": "Joins the user's channel."
+                    },
+                    "disconnect": {
+                        "__text": "Disconnects from the current voice channel."
+                    },
+                    "queue": {
+                        "__text": "Manages guild's queue.",
+                        "list": {
+                            "__text": "Lists all tracks on the queue."
+                        },
+                        "clear": {
+                            "__text": "Clears queue."
+                        },
+                        "now": {
+                            "__text": "Replies with the name of the currently playing track."
+                        }
+                    }
+                }
+            },
             "perms": {
                 "ADMINISTRATOR": "Administrator",
                 "CREATE_INSTANT_INVITE": "Create Instant Invite",
