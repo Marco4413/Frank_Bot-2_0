@@ -1,6 +1,6 @@
 {
     "en-us": {
-        "__fullName": "English US",
+        "__fullName": "English - US",
         "help": {
             "title": "Help (for {0}):",
             "guild": "Guild",
@@ -120,7 +120,7 @@
         },
         "purge": {
             "succesful": "{0} Messages were deleted!",
-            "outOfRange": "Only {0} Messages can be delted at once.",
+            "outOfRange": "Only {0} Messages can be delete at once.",
             "NaN": "\"{0}\" isn't a valid number.",
             "onlyPositive": "Can't delete a negative ammount of messages."
         },
