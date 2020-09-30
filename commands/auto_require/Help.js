@@ -7,22 +7,53 @@ const { CommandManager } = require("../commands.js");
 
 /**
  * @param {discord.MessageEmbed} embed
- * @param {Command} command
- * @param {Object<String, String>} commandCommonLocale
+ * @param {Array<String>} paths
+ * @param {Object<String, String>} locale
  */
-function fillHelpFields(embed, command, commandCommonLocale) {
-    command.subcommands.forEach(
-        child => {
-            const subCommandsList = [];
-            child.subcommands.forEach(
-                sub => subCommandsList.push(sub.name)
-            );
-            embed.addField(
-                child.name,
-                commandCommonLocale[child.name].__text + "\nChildren: [ " + subCommandsList.join(", ") + " ]"
-            );
+function fillHelpEmbed(embed, paths, locale) {
+    
+    // Get the default help page
+    let page = locale.descriptions;
+    // Default help name
+    let commandName = locale.guild;
+
+    // Crawl through the specified path and update above variables accordingly
+    for (let i = 0; i < paths.length; i++) {
+        const name = paths[i];
+        const thisPage = page.sub[name];
+        if (thisPage === undefined) {
+            break;
         }
-    );
+        page = thisPage;
+        commandName = name;
+    }
+
+    // Sets embed's title and description
+    embed.title = formatString(locale.title, capitalize(commandName));
+    embed.description = page.desc;
+
+    // Gets all subcommands to the current one
+    const subCommands = Object.keys(page.sub);
+    if (subCommands.length <= 0) {
+        // If there isn't any subcommand then add the noChildren text
+        embed.description += "\n" + locale.noChildren;
+    } else {
+        // For each subcommand add a field for it and display its children names
+        subCommands.forEach(subKey => {
+            const subCommand = page.sub[subKey];
+            embed.addField(
+                subKey,
+                formatString(
+                    "{0}\n{1}",
+                    subCommand.desc,
+                    formatString(
+                        locale.children,
+                        Object.keys(subCommand.sub).join(locale.childrenSep)
+                    )
+                )
+            );
+        });
+    }
 }
 
 module.exports = class Help extends Command {
@@ -42,16 +73,7 @@ module.exports = class Help extends Command {
     async execute(args, msg, locale, canShortcut) {
         const embed = createDefaultEmbed(msg);
 
-        const commandPath = args.join(".");
-        const commandHelpLocale = traverseObject(locale.common.descriptions, commandPath);
-        const command = CommandManager.getChildByPath(commandPath);
-
-        embed.title = formatString(locale.command.title, capitalize(command.name === CommandManager.name ? "guild" : command.name));
-        if (command.subcommands <= 0) {
-            embed.description = locale.command.noHelp;
-        } else {
-            fillHelpFields(embed, command, commandHelpLocale);
-        }
+        fillHelpEmbed(embed, args, locale.command);
 
         msg.channel.send(embed);
     }
