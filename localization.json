@@ -14,6 +14,10 @@
                         "desc": "Used to get this help message.",
                         "sub": {}
                     },
+                    "info": {
+                        "desc": "Used to get info about the bot.",
+                        "sub": {}
+                    },
                     "prefix": {
                         "desc": "Used to either get or set the guild's prefix.",
                         "sub": {
@@ -92,6 +96,16 @@
                     }
                 }
             }
+        },
+        "info": {
+            "title": "Bot's Info:",
+            "name": "Name:",
+            "version": "Version:",
+            "description": "Description:",
+            "author": "Author:",
+            "copyright": "Copyright:",
+            "dependencies": "Dependencies:",
+            "bulletList": " - "
         },
         "prefix": {
             "set": {
@@ -225,6 +239,10 @@
                         "desc": "Usato per mostrare questo messaggio d'aiuto.",
                         "sub": {}
                     },
+                    "info": {
+                        "desc": "Usato per mostrare informazioni riguardanti il bot.",
+                        "sub": {}
+                    },
                     "prefix": {
                         "desc": "Usato per mostrare o cambiare il prefisso della gilda.",
                         "sub": {
@@ -303,6 +321,16 @@
                     }
                 }
             }
+        },
+        "info": {
+            "title": "Informazioni sul Bot:",
+            "name": "Nome:",
+            "version": "Versione:",
+            "description": "Descrizione:",
+            "author": "Autore:",
+            "copyright": "Copyright:",
+            "dependencies": "Dipendenze:",
+            "bulletList": " - "
         },
         "prefix": {
             "set": {
