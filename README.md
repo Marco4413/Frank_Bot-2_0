@@ -2,7 +2,7 @@
 
 Steps to run this project:
 
-1. Create a file named `.env` and add all the following fields:
+1. Create a file named `.env` and add all the following fields (NOTE: This project uses Postgres):
   - debug_log = false
   - token = "INSERT DISCORD TOKEN HERE"
   - db_host     = "DATABASE HOST"
