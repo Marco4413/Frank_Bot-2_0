@@ -1,0 +1,210 @@
+{
+    "__fullName": "Italiano - Italia",
+    "help": {
+        "title": "Aiuto (per {0}):",
+        "guild": "Gilda",
+        "children": "Figli: [ {0} ]",
+        "childrenSep": ", ",
+        "noChildren": "Questo comando non ha figli.",
+        "descriptions": {
+            "desc": "Lista di tutti i comandi disponibili.",
+            "sub": {
+                "help": {
+                    "desc": "Usato per mostrare questo messaggio d'aiuto."
+                },
+                "info": {
+                    "desc": "Usato per mostrare informazioni riguardanti il bot."
+                },
+                "prefix": {
+                    "desc": "Usato per mostrare o cambiare il prefisso della gilda.",
+                    "sub": {
+                        "set": {
+                            "desc": "Cambia il prefisso a quello specificato."
+                        },
+                        "get": {
+                            "desc": "Mostra il prefisso attualmente in uso."
+                        }
+                    }
+                },
+                "language": {
+                    "desc": "Usato per mostrare o cambiare il linguaggio della gilda.",
+                    "sub": {
+                        "set": {
+                            "desc": "Cambia la lingua a quella specificata."
+                        },
+                        "get": {
+                            "desc": "Mostra la lingua attualmente in uso."
+                        },
+                        "list": {
+                            "desc": "Mostra tutte le lingue disponibili."
+                        }
+                    }
+                },
+                "purge": {
+                    "desc": "Cancella il numero specificato di messaggi."
+                },
+                "shortcuts": {
+                    "desc": "Attiva/Disattiva gli shortcut per questa gilda."
+                },
+                "music": {
+                    "desc": "Usato per gestire il bot per la musica.",
+                    "sub": {
+                        "play": {
+                            "desc": "Riproduce il link/id/ricercato video di youtube."
+                        },
+                        "skip": {
+                            "desc": "Salta la canzone attualmente in riproduzione."
+                        },
+                        "join": {
+                            "desc": "Entra nel canale dell'utente."
+                        },
+                        "disconnect": {
+                            "desc": "Si disconnette dal canale in cui si trova attualmente."
+                        },
+                        "queue": {
+                            "desc": "Gestisce la coda della gilda.",
+                            "sub": {
+                                "list": {
+                                    "desc": "Mostra tutte le canzoni in coda."
+                                },
+                                "clear": {
+                                    "desc": "Cancella la coda."
+                                },
+                                "now": {
+                                    "desc": "Mostra la canzone attualmente in riproduzione."
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "info": {
+        "title": "Informazioni sul Bot:",
+        "name": "Nome:",
+        "version": "Versione:",
+        "description": "Descrizione:",
+        "author": "Autore:",
+        "copyright": "Copyright:",
+        "repository": "GitHub:",
+        "dependencies": "Dipendenze:",
+        "bulletList": " - "
+    },
+    "prefix": {
+        "set": {
+            "succesful": "Il prefisso è stato cambiato in \"{0}\"",
+            "mustSpecify": "Devi specificare un prefisso per cambiarlo"
+        },
+        "get": {
+            "current": "Il prefisso attualmente in uso è \"{0}\""
+        }
+    },
+    "language": {
+        "set": {
+            "succesful": "La lingua è stata cambiata in \"{0}\"",
+            "same": "\"{0}\" è la stessa lingua di quella corrente, non c'è bisogno di cambiare.",
+            "mustSpecify": "Devi specificare una lingua per poterla cambiare",
+            "undefined": "\"{0}\" non è attualmente supportato"
+        },
+        "get": {
+            "current": "La lingua corrente è \"{0}\""
+        },
+        "list": {
+            "title": "Tutte le lingue disponibili:"
+        }
+    },
+    "purge": {
+        "succesful": "{0} Messaggi sono stati cancellati!",
+        "outOfRange": "Solo {0} Messaggi possono essere cancellati alla volta.",
+        "NaN": "\"{0}\" non è un numero valido.",
+        "onlyPositive": "Non posso cancellare un numero negativo di pessaggi."
+    },
+    "shortcuts": {
+        "on": "Shortcuts possono ora essere usati nella tua gilda!",
+        "off": "Shortcuts sono stati disabilitati nella tua gilda."
+    },
+    "music": {
+        "play": {
+            "playing": "Riproducendo {0}",
+            "author": "Autore: {0}",
+            "length": "Durata: {0} minuti",
+            "views": "Visualizzazioni: {0}",
+            "onQueue": "{0} è stato aggiunto alla coda.",
+            "tooLong": "Il video dura troppo, non può durare più di {0} minuti.",
+            "videoNotFound": "Video specificato non trovato.",
+            "notSameChannel": "Devi essere nel mio stesso canale per usare questo comando.",
+            "notConnected": "Devi essere connesso ad un canale per usare questo comando.",
+            "notJoinable": "Non è stato possibile entrare nel tuo canale, usane uno in cui posso entrare."
+        },
+        "skip": {
+            "succesful": "Saltando la canzone corrente.",
+            "notConnected": "Devo riprodurre qualcosa perchè tu possa usare questo comando."
+        },
+        "join": {
+            "succesful": "Sono entrato!",
+            "emptyQueue": "Non posso entrare se la coda è vuota.",
+            "alreadyConnected": "Sono già in un canale vocale.",
+            "notConnected": "Devi essere connesso ad un canale per usare questo comando.",
+            "notJoinable": "Non è stato possibile entrare nel tuo canale, usane uno in cui posso entrare."
+        },
+        "disconnect": {
+            "succesful": "Disconnesso.",
+            "notSameChannel": "Devi essere nel mio stesso canale per usare questo comando.",
+            "notConnected": "Devo essere connesso perchè tu possa usare questo comando."
+        },
+        "queue": {
+            "list": {
+                "title": "La coda di {0}:",
+                "empty": "Nessuna canzone in coda",
+                "songName": "{0} fatta da {1}",
+                "description": "Durata: {0} minuti"
+            },
+            "now": {
+                "playing": "Riproducendo {0}",
+                "nothing": "Non sto riproducendo nulla."
+            },
+            "clear": {
+                "succesful": "La coda di {0} è stata svuotata.",
+                "nothing": "La coda di {0} è già vuota."
+            }
+        }
+    },
+    "_common": {
+        "missingPerm": "Non hai il permesso \"{0}\"",
+        "genericHelp": "Usa `help {0}` per mostrare una pagina d'aiuto su questo comando",
+        "perms": {
+            "ADMINISTRATOR": "Amministratore",
+            "CREATE_INSTANT_INVITE": "Creare Inviti Istantanei",
+            "KICK_MEMBERS": "Espellere Membri",
+            "BAN_MEMBERS": "Bandire Membri",
+            "MANAGE_CHANNELS": "Gestire Canali",
+            "MANAGE_GUILD": "Gestire Gilda",
+            "ADD_REACTIONS": "Aggiungere Reazioni",
+            "VIEW_AUDIT_LOG": "Visualizzare il Log",
+            "PRIORITY_SPEAKER": "Speaker di Priorità",
+            "STREAM": "Streammare",
+            "VIEW_CHANNEL": "Visualizzare il Canale",
+            "SEND_MESSAGES": "Inviare Messaggi",
+            "SEND_TTS_MESSAGES": "Inviare Messaggi TTS",
+            "MANAGE_MESSAGES": "Gestire i Messaggi",
+            "EMBED_LINKS": "Link con Preview",
+            "ATTACH_FILES": "Caricare File",
+            "READ_MESSAGE_HISTORY": "Leggere la Cronologia dei Messaggi",
+            "MENTION_EVERYONE": "Menzionare Tutti",
+            "USE_EXTERNAL_EMOJIS": "Usare Emoji Esterne",
+            "VIEW_GUILD_INSIGHTS": "View Guild Insights",
+            "CONNECT": "Connetterti",
+            "SPEAK": "Parlare",
+            "MUTE_MEMBERS": "Mutare Membri",
+            "DEAFEN_MEMBERS": "Silenziare Membri",
+            "MOVE_MEMBERS": "Muovere Membri",
+            "USE_VAD": "Usare VAD",
+            "CHANGE_NICKNAME": "Cambiare Nickname",
+            "MANAGE_NICKNAMES": "Gestire i Nickname",
+            "MANAGE_ROLES": "Gestire i Ruoli",
+            "MANAGE_WEBHOOKS": "Gestire Webhooks",
+            "MANAGE_EMOJIS": "Gestire Emoji"
+        }
+    }
+}

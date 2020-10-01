@@ -5,7 +5,7 @@ if (fs.existsSync(".env")) {
     dotenv.config();
 }
 
-const localization = require("./localization.json");
+const { localization } = require("./localization.js");
 const { defaults, database, Guild } = require("./database.js");
 const discord = require("discord.js");
 const { CommandManager } = require("./commands/commands.js");

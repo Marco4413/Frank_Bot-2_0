@@ -3,7 +3,7 @@ const Command = require("../command.js");
 const db = require("../../database.js");
 const { createDefaultEmbed, formatString, missingPerm } = require("../../utils.js");
 
-const localization = require("../../localization.json");
+const { localization, availableLocales } = require("../../localization.js");
 
 class Set extends Command {
     constructor() {
@@ -89,7 +89,7 @@ class List extends Command {
     async execute(args, msg, locale, canShortcut) {
         const embed = createDefaultEmbed(msg);
         embed.setTitle(locale.command.title);
-        Object.keys(localization).forEach(
+        availableLocales.forEach(
             lang => {
                 embed.addField(lang, localization[lang].__fullName);
             }

@@ -1,0 +1,210 @@
+{
+    "__fullName": "English - US",
+    "help": {
+        "title": "Help (for {0}):",
+        "guild": "Guild",
+        "children": "Children: [ {0} ]",
+        "childrenSep": ", ",
+        "noChildren": "This command has no children.",
+        "descriptions": {
+            "desc": "List of all available commands.",
+            "sub": {
+                "help": {
+                    "desc": "Used to get this help message."
+                },
+                "info": {
+                    "desc": "Used to get info about the bot."
+                },
+                "prefix": {
+                    "desc": "Used to either get or set the guild's prefix.",
+                    "sub": {
+                        "set": {
+                            "desc": "Sets guild's prefix to the one specified."
+                        },
+                        "get": {
+                            "desc": "Gets the current guild's prefix."
+                        }
+                    }
+                },
+                "language": {
+                    "desc": "Used to either get or set the guild's language.",
+                    "sub": {
+                        "set": {
+                            "desc": "Sets guild's language to the one specified."
+                        },
+                        "get": {
+                            "desc": "Gets the current guild's language."
+                        },
+                        "list": {
+                            "desc": "Lists all available languages."
+                        }
+                    }
+                },
+                "purge": {
+                    "desc": "Deletes the specified ammount of messages."
+                },
+                "shortcuts": {
+                    "desc": "Toggles shortcuts for this guild."
+                },
+                "music": {
+                    "desc": "Used to manage bot's music features.",
+                    "sub": {
+                        "play": {
+                            "desc": "Plays the specified link/id/searched youtube video."
+                        },
+                        "skip": {
+                            "desc": "Skips the currently playing track."
+                        },
+                        "join": {
+                            "desc": "Joins the user's channel."
+                        },
+                        "disconnect": {
+                            "desc": "Disconnects from the current voice channel."
+                        },
+                        "queue": {
+                            "desc": "Manages guild's queue.",
+                            "sub": {
+                                "list": {
+                                    "desc": "Lists all tracks on the queue."
+                                },
+                                "clear": {
+                                    "desc": "Clears queue."
+                                },
+                                "now": {
+                                    "desc": "Replies with the name of the currently playing track."
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "info": {
+        "title": "Bot's Info:",
+        "name": "Name:",
+        "version": "Version:",
+        "description": "Description:",
+        "author": "Author:",
+        "copyright": "Copyright:",
+        "repository": "GitHub repo:",
+        "dependencies": "Dependencies:",
+        "bulletList": " - "
+    },
+    "prefix": {
+        "set": {
+            "succesful": "Prefix was succesfully changed to \"{0}\"",
+            "mustSpecify": "You must specify a prefix to change it"
+        },
+        "get": {
+            "current": "The current prefix is \"{0}\""
+        }
+    },
+    "language": {
+        "set": {
+            "succesful": "Language was succesfully changed to \"{0}\"",
+            "same": "\"{0}\" is the same language as the current one, no need to change.",
+            "mustSpecify": "You must specify a language to change it",
+            "undefined": "\"{0}\" isn't currently supported"
+        },
+        "get": {
+            "current": "The current language is \"{0}\""
+        },
+        "list": {
+            "title": "All available languages:"
+        }
+    },
+    "purge": {
+        "succesful": "{0} Messages were deleted!",
+        "outOfRange": "Only {0} Messages can be delete at once.",
+        "NaN": "\"{0}\" isn't a valid number.",
+        "onlyPositive": "Can't delete a negative ammount of messages."
+    },
+    "shortcuts": {
+        "on": "Shortcuts can now be used on your guild!",
+        "off": "Shortcuts were disabled from your guild."
+    },
+    "music": {
+        "play": {
+            "playing": "Now playing {0}",
+            "author": "Author: {0}",
+            "length": "Length: {0} minutes",
+            "views": "Views: {0}",
+            "onQueue": "{0} was added to queue.",
+            "tooLong": "Video is too long, it can't be more than {0} minutes long.",
+            "videoNotFound": "Couldn't find the specified video.",
+            "notSameChannel": "You must be in the same voice channel as mine to use this command.",
+            "notConnected": "You must be connected to a voice channel to use this command.",
+            "notJoinable": "Couldn't join your voice channel, please use one that I can join."
+        },
+        "skip": {
+            "succesful": "Skipping current track.",
+            "notConnected": "I must be playing music for you to perform this command."
+        },
+        "join": {
+            "succesful": "Joined channel!",
+            "emptyQueue": "Can't join if the queue is empty.",
+            "alreadyConnected": "I'm already on a voice channel.",
+            "notConnected": "You must be connected to a voice channel to use this command.",
+            "notJoinable": "Couldn't join your voice channel, please use one that I can join."
+        },
+        "disconnect": {
+            "succesful": "Disconnected.",
+            "notSameChannel": "You must be in the same voice channel as mine to use this command.",
+            "notConnected": "I must be in a voice channel for you to perform this command."
+        },
+        "queue": {
+            "list": {
+                "title": "{0}'s queue:",
+                "empty": "No songs on queue",
+                "songName": "{0} made by {1}",
+                "description": "Duration: {0} minutes"
+            },
+            "now": {
+                "playing": "Now playing {0}",
+                "nothing": "I'm not playing anything at the moment."
+            },
+            "clear": {
+                "succesful": "{0}'s queue was cleared.",
+                "nothing": "{0}'s queue is already empty."
+            }
+        }
+    },
+    "_common": {
+        "missingPerm": "You're missing permission \"{0}\"",
+        "genericHelp": "Use `help {0}` to get help about this command",
+        "perms": {
+            "ADMINISTRATOR": "Administrator",
+            "CREATE_INSTANT_INVITE": "Create Instant Invite",
+            "KICK_MEMBERS": "Kick Members",
+            "BAN_MEMBERS": "Ban Members",
+            "MANAGE_CHANNELS": "Manage Channels",
+            "MANAGE_GUILD": "Manage Guild",
+            "ADD_REACTIONS": "Add Reactions",
+            "VIEW_AUDIT_LOG": "View Audit Log",
+            "PRIORITY_SPEAKER": "Priority Speaker",
+            "STREAM": "Stream",
+            "VIEW_CHANNEL": "View Channel",
+            "SEND_MESSAGES": "Send Messages",
+            "SEND_TTS_MESSAGES": "Send TTS Messages",
+            "MANAGE_MESSAGES": "Manage Messages",
+            "EMBED_LINKS": "Embed Links",
+            "ATTACH_FILES": "Attach Files",
+            "READ_MESSAGE_HISTORY": "Read Message History",
+            "MENTION_EVERYONE": "Mention Everyone",
+            "USE_EXTERNAL_EMOJIS": "Use External Emojis",
+            "VIEW_GUILD_INSIGHTS": "View Guild Insights",
+            "CONNECT": "Connect",
+            "SPEAK": "Speak",
+            "MUTE_MEMBERS": "Mute Members",
+            "DEAFEN_MEMBERS": "Deafen Members",
+            "MOVE_MEMBERS": "Move Members",
+            "USE_VAD": "Use VAD",
+            "CHANGE_NICKNAME": "Change Nickname",
+            "MANAGE_NICKNAMES": "Manage Nicknames",
+            "MANAGE_ROLES": "Manage Roles",
+            "MANAGE_WEBHOOKS": "Manage Webhooks",
+            "MANAGE_EMOJIS": "Manage Emojis"
+        }
+    }
+}
