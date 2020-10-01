@@ -7,10 +7,20 @@ class Command {
      * @param {String} shortcut - A shortcut for the command
      * @param {Array<Command>} subcommands - Command's subcommands
      */
-    constructor(name, shortcut, subcommands) {
+    constructor(name, shortcut, subcommands=[]) {
         this.name = name;
         this.shortcut = shortcut;
-        this.subcommands = subcommands === undefined ? [] : subcommands;
+
+        /**
+         * @type {Array<Command>}
+         */
+        this.subcommands = [];
+        /**
+         * @type {Command}
+         */
+        this.parent;
+        
+        this.addChildren(...subcommands);
     }
 
     /**
@@ -100,6 +110,35 @@ class Command {
         }
 
         return currentCommand;
+    }
+
+    /**
+     * Adds the specified commands to its children
+     * @param {...Command} children - Commands to be added
+     * @returns {Command} this
+     */
+    addChildren(...children) {
+        children.forEach(
+            command => {
+                this.subcommands.push(command);
+                command.parent = this;
+            }
+        );
+        return this;
+    }
+
+    /**
+     * Gets the path to the current command
+     * @param {String} separator - The separator to use between commands' names (e.g. sep="." => "music.queue")
+     * @returns {String} The path to this command
+     */
+    getPath(separator=".") {
+        if (this.parent === undefined) {
+            return this.name;
+        } else {
+            const parentName = this.parent.getPath(separator);
+            return (parentName === "" ? "" : (parentName + separator)) + this.name;
+        }
     }
 }
 

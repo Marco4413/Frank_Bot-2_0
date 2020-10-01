@@ -35,13 +35,12 @@ class CommandManager extends Command {
     }
 
     /**
-     * Adds the specified commands to itself
-     * @param  {...Command} commands - Commands to be added
+     * Overload of the parent class, on CommandManager it must return an empty string
+     * @param {String} separator - The separator to use between commands' names (e.g. sep="." => "music.queue")
+     * @returns {String} The path to this command
      */
-    addCommands(...commands) {
-        commands.forEach(
-            command => this.subcommands.push(command)
-        );
+    getPath(separator=".") {
+        return "";
     }
 }
 
@@ -54,5 +53,5 @@ const autoRequireFolder = path.join(__dirname, "auto_require");
 const commandsToRequire = fs.readdirSync(autoRequireFolder);
 commandsToRequire.forEach(relPath => {
     const Command = require(path.join(autoRequireFolder, relPath));
-    exports.CommandManager.addCommands(new Command());
+    exports.CommandManager.addChildren(new Command());
 });
