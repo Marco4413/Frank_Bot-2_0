@@ -15,6 +15,10 @@
    ],
    "author": "hds",
    "license": "MIT",
+   "repository": {
+      "type": "git",
+      "url": "https://github.com/hds536jhmk/Frank_Bot-2_0.git"
+   },
    "dependencies": {
       "@discordjs/opus": "^0.3.2",
       "discord.js": "^12.3.1",

@@ -60,6 +60,10 @@ module.exports = class Info extends Command {
                     "value": appInfo.license
                 },
                 {
+                    "name": locale.command.repository,
+                    "value": appInfo.repository.url
+                },
+                {
                     "name": locale.command.dependencies,
                     "value": dependenciesDescription
                 }

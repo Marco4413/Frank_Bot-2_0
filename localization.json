@@ -88,6 +88,7 @@
             "description": "Description:",
             "author": "Author:",
             "copyright": "Copyright:",
+            "repository": "GitHub repo:",
             "dependencies": "Dependencies:",
             "bulletList": " - "
         },
@@ -297,6 +298,7 @@
             "description": "Descrizione:",
             "author": "Autore:",
             "copyright": "Copyright:",
+            "repository": "GitHub:",
             "dependencies": "Dipendenze:",
             "bulletList": " - "
         },
