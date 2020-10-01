@@ -2,5 +2,13 @@
 
 Steps to run this project:
 
-1. Run `npm i` command
-2. Run `npm .` command
+1. Create a file named `.env` and add all the following fields:
+  - debug_log = false
+  - token = "INSERT DISCORD TOKEN HERE"
+  - db_host     = "DATABASE HOST"
+  - db_port     = 5432
+  - db_username = "DATABASE USERNAME"
+  - db_password = "DATABASE PASSWORD"
+  - db_name     = "DATABASE NAME"
+2. Run `npm i` to install all dependencies
+3. Run `node .` to run the project
