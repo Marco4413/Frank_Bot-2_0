@@ -62,7 +62,7 @@ class Get extends Command {
 
 module.exports = class Prefix extends Command {
     constructor() {
-        super("prefix", "pf", [ new Set(), new Get() ]);
+        super("prefix", "p", [ new Set(), new Get() ]);
     }
 
     /**
