@@ -152,6 +152,7 @@
             },
             "disconnect": {
                 "succesful": "Disconnected.",
+                "notSameChannel": "You must be in the same voice channel as mine to use this command.",
                 "notConnected": "I must be in a voice channel for you to perform this command."
             },
             "queue": {
@@ -361,6 +362,7 @@
             },
             "disconnect": {
                 "succesful": "Disconnesso.",
+                "notSameChannel": "Devi essere nel mio stesso canale per usare questo comando.",
                 "notConnected": "Devo essere connesso perchè tu possa usare questo comando."
             },
             "queue": {

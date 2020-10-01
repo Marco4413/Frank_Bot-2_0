@@ -257,8 +257,11 @@ class Disconnect extends Command {
      * @returns {undefined}
      */
     async execute(args, msg, locale, canShortcut) {
-        if (msg.guild.me.voice === null) {
+        if (msg.guild.me.voice.connection === null) {
             msg.reply(locale.command.notConnected);
+            return;
+        } else if (msg.guild.me.voice.channel != msg.member.voice.channel) {
+            msg.reply(locale.command.notSameChannel);
             return;
         }
         disconnect(msg.guild.me.voice.connection);
