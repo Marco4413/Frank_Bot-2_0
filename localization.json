@@ -98,8 +98,7 @@
             },
             "get": {
                 "current": "The current prefix is \"{0}\""
-            },
-            "help": "Use `prefix get` to get the current prefix"
+            }
         },
         "language": {
             "set": {
@@ -113,8 +112,7 @@
             },
             "list": {
                 "title": "All available languages:"
-            },
-            "help": "Use `language get` to get the current language"
+            }
         },
         "purge": {
             "succesful": "{0} Messages were deleted!",
@@ -174,6 +172,7 @@
         },
         "_common": {
             "missingPerm": "You're missing permission \"{0}\"",
+            "genericHelp": "Use `help {0}` to get help about this command",
             "perms": {
                 "ADMINISTRATOR": "Administrator",
                 "CREATE_INSTANT_INVITE": "Create Instant Invite",
@@ -308,8 +307,7 @@
             },
             "get": {
                 "current": "Il prefisso attualmente in uso è \"{0}\""
-            },
-            "help": "Usa `prefix get` per mostrare il prefisso attualmente in uso"
+            }
         },
         "language": {
             "set": {
@@ -323,8 +321,7 @@
             },
             "list": {
                 "title": "Tutte le lingue disponibili:"
-            },
-            "help": "Usa `language get` per mostrare la lingua corrente"
+            }
         },
         "purge": {
             "succesful": "{0} Messaggi sono stati cancellati!",
@@ -384,6 +381,7 @@
         },
         "_common": {
             "missingPerm": "Non hai il permesso \"{0}\"",
+            "genericHelp": "Usa `help {0}` per mostrare una pagina d'aiuto su questo comando",
             "perms": {
                 "ADMINISTRATOR": "Amministratore",
                 "CREATE_INSTANT_INVITE": "Creare Inviti Istantanei",

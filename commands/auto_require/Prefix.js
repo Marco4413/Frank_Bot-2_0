@@ -78,7 +78,5 @@ module.exports = class Prefix extends Command {
         if (await super.execute(args, msg, locale, canShortcut)) {
             return;
         }
-
-        msg.reply(locale.command.help);
     }
 }

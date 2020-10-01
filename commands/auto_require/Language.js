@@ -116,7 +116,5 @@ module.exports = class Language extends Command {
         if (await super.execute(args, msg, locale, canShortcut)) {
             return;
         }
-
-        msg.reply(locale.command.help);
     }
 }

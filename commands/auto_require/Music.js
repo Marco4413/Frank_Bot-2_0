@@ -378,7 +378,7 @@ class Queue extends Command {
      * @returns {undefined}
      */
     async execute(args, msg, locale, canShortcut) {
-        if (super.execute(args, msg, locale, canShortcut)) {
+        if (await super.execute(args, msg, locale, canShortcut)) {
             return;
         }
     }
@@ -400,7 +400,7 @@ module.exports = class Music extends Command {
      * @returns {undefined}
      */
     async execute(args, msg, locale, canShortcut) {
-        if (super.execute(args, msg, locale, canShortcut)) {
+        if (await super.execute(args, msg, locale, canShortcut)) {
             return;
         }
     }

@@ -1,5 +1,6 @@
 
 const discord = require("discord.js");
+const { formatString } = require("../utils.js");
 
 class Command {
     /**
@@ -7,9 +8,10 @@ class Command {
      * @param {String} shortcut - A shortcut for the command
      * @param {Array<Command>} subcommands - Command's subcommands
      */
-    constructor(name, shortcut, subcommands=[]) {
+    constructor(name, shortcut, subcommands=[], autoHelp=true) {
         this.name = name;
         this.shortcut = shortcut;
+        this.autoHelp = autoHelp;
 
         /**
          * @type {Array<Command>}
@@ -73,6 +75,9 @@ class Command {
             if (await sub.checkAndRun(args, canShortcut, msg, locale)) {
                 return true;
             }
+        }
+        if (this.autoHelp) {
+            msg.reply(formatString(locale.common.genericHelp, this.getPath(" ")));
         }
         return false;
     }
