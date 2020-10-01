@@ -32,27 +32,32 @@ function fillHelpEmbed(embed, paths, locale) {
     embed.title = formatString(locale.title, capitalize(commandName));
     embed.description = page.desc;
 
-    // Gets all subcommands to the current one
-    const subCommands = Object.keys(page.sub);
-    if (subCommands.length <= 0) {
+    if (page.sub === undefined) {
         // If there isn't any subcommand then add the noChildren text
         embed.description += "\n" + locale.noChildren;
     } else {
-        // For each subcommand add a field for it and display its children names
-        subCommands.forEach(subKey => {
-            const subCommand = page.sub[subKey];
-            embed.addField(
-                subKey,
-                formatString(
-                    "{0}\n{1}",
-                    subCommand.desc,
+        // Gets all subcommands to the current one
+        const subCommands = Object.keys(page.sub);
+        if (subCommands.length <= 0) {
+            // If there isn't any subcommand then add the noChildren text
+            embed.description += "\n" + locale.noChildren;
+        } else {
+            // For each subcommand add a field for it and display its children names
+            subCommands.forEach(subKey => {
+                const subCommand = page.sub[subKey];
+                embed.addField(
+                    subKey,
                     formatString(
-                        locale.children,
-                        Object.keys(subCommand.sub).join(locale.childrenSep)
+                        "{0}\n{1}",
+                        subCommand.desc,
+                        formatString(
+                            locale.children,
+                            subCommand.sub === undefined ? "" : Object.keys(subCommand.sub).join(locale.childrenSep)
+                        )
                     )
-                )
-            );
-        });
+                );
+            });
+        }
     }
 }
 

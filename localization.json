@@ -11,23 +11,19 @@
                 "desc": "List of all available commands.",
                 "sub": {
                     "help": {
-                        "desc": "Used to get this help message.",
-                        "sub": {}
+                        "desc": "Used to get this help message."
                     },
                     "info": {
-                        "desc": "Used to get info about the bot.",
-                        "sub": {}
+                        "desc": "Used to get info about the bot."
                     },
                     "prefix": {
                         "desc": "Used to either get or set the guild's prefix.",
                         "sub": {
                             "set": {
-                                "desc": "Sets guild's prefix to the one specified.",
-                                "sub": {}
+                                "desc": "Sets guild's prefix to the one specified."
                             },
                             "get": {
-                                "desc": "Gets the current guild's prefix.",
-                                "sub": {}
+                                "desc": "Gets the current guild's prefix."
                             }
                         }
                     },
@@ -35,60 +31,48 @@
                         "desc": "Used to either get or set the guild's language.",
                         "sub": {
                             "set": {
-                                "desc": "Sets guild's language to the one specified.",
-                                "sub": {}
+                                "desc": "Sets guild's language to the one specified."
                             },
                             "get": {
-                                "desc": "Gets the current guild's language.",
-                                "sub": {}
+                                "desc": "Gets the current guild's language."
                             },
                             "list": {
-                                "desc": "Lists all available languages.",
-                                "sub": {}
+                                "desc": "Lists all available languages."
                             }
                         }
                     },
                     "purge": {
-                        "desc": "Deletes the specified ammount of messages.",
-                        "sub": {}
+                        "desc": "Deletes the specified ammount of messages."
                     },
                     "shortcuts": {
-                        "desc": "Toggles shortcuts for this guild.",
-                        "sub": {}
+                        "desc": "Toggles shortcuts for this guild."
                     },
                     "music": {
                         "desc": "Used to manage bot's music features.",
                         "sub": {
                             "play": {
-                                "desc": "Plays the specified link/id/searched youtube video.",
-                                "sub": {}
+                                "desc": "Plays the specified link/id/searched youtube video."
                             },
                             "skip": {
-                                "desc": "Skips the currently playing track.",
-                                "sub": {}
+                                "desc": "Skips the currently playing track."
                             },
                             "join": {
-                                "desc": "Joins the user's channel.",
-                                "sub": {}
+                                "desc": "Joins the user's channel."
                             },
                             "disconnect": {
-                                "desc": "Disconnects from the current voice channel.",
-                                "sub": {}
+                                "desc": "Disconnects from the current voice channel."
                             },
                             "queue": {
                                 "desc": "Manages guild's queue.",
                                 "sub": {
                                     "list": {
-                                        "desc": "Lists all tracks on the queue.",
-                                        "sub": {}
+                                        "desc": "Lists all tracks on the queue."
                                     },
                                     "clear": {
-                                        "desc": "Clears queue.",
-                                        "sub": {}
+                                        "desc": "Clears queue."
                                     },
                                     "now": {
-                                        "desc": "Replies with the name of the currently playing track.",
-                                        "sub": {}
+                                        "desc": "Replies with the name of the currently playing track."
                                     }
                                 }
                             }
@@ -236,23 +220,19 @@
                 "desc": "Lista di tutti i comandi disponibili.",
                 "sub": {
                     "help": {
-                        "desc": "Usato per mostrare questo messaggio d'aiuto.",
-                        "sub": {}
+                        "desc": "Usato per mostrare questo messaggio d'aiuto."
                     },
                     "info": {
-                        "desc": "Usato per mostrare informazioni riguardanti il bot.",
-                        "sub": {}
+                        "desc": "Usato per mostrare informazioni riguardanti il bot."
                     },
                     "prefix": {
                         "desc": "Usato per mostrare o cambiare il prefisso della gilda.",
                         "sub": {
                             "set": {
-                                "desc": "Cambia il prefisso a quello specificato.",
-                                "sub": {}
+                                "desc": "Cambia il prefisso a quello specificato."
                             },
                             "get": {
-                                "desc": "Mostra il prefisso attualmente in uso.",
-                                "sub": {}
+                                "desc": "Mostra il prefisso attualmente in uso."
                             }
                         }
                     },
@@ -260,60 +240,48 @@
                         "desc": "Usato per mostrare o cambiare il linguaggio della gilda.",
                         "sub": {
                             "set": {
-                                "desc": "Cambia la lingua a quella specificata.",
-                                "sub": {}
+                                "desc": "Cambia la lingua a quella specificata."
                             },
                             "get": {
-                                "desc": "Mostra la lingua attualmente in uso.",
-                                "sub": {}
+                                "desc": "Mostra la lingua attualmente in uso."
                             },
                             "list": {
-                                "desc": "Mostra tutte le lingue disponibili.",
-                                "sub": {}
+                                "desc": "Mostra tutte le lingue disponibili."
                             }
                         }
                     },
                     "purge": {
-                        "desc": "Cancella il numero specificato di messaggi.",
-                        "sub": {}
+                        "desc": "Cancella il numero specificato di messaggi."
                     },
                     "shortcuts": {
-                        "desc": "Attiva/Disattiva gli shortcut per questa gilda.",
-                        "sub": {}
+                        "desc": "Attiva/Disattiva gli shortcut per questa gilda."
                     },
                     "music": {
                         "desc": "Usato per gestire il bot per la musica.",
                         "sub": {
                             "play": {
-                                "desc": "Riproduce il link/id/ricercato video di youtube.",
-                                "sub": {}
+                                "desc": "Riproduce il link/id/ricercato video di youtube."
                             },
                             "skip": {
-                                "desc": "Salta la canzone attualmente in riproduzione.",
-                                "sub": {}
+                                "desc": "Salta la canzone attualmente in riproduzione."
                             },
                             "join": {
-                                "desc": "Entra nel canale dell'utente.",
-                                "sub": {}
+                                "desc": "Entra nel canale dell'utente."
                             },
                             "disconnect": {
-                                "desc": "Si disconnette dal canale in cui si trova attualmente.",
-                                "sub": {}
+                                "desc": "Si disconnette dal canale in cui si trova attualmente."
                             },
                             "queue": {
                                 "desc": "Gestisce la coda della gilda.",
                                 "sub": {
                                     "list": {
-                                        "desc": "Mostra tutte le canzoni in coda.",
-                                        "sub": {}
+                                        "desc": "Mostra tutte le canzoni in coda."
                                     },
                                     "clear": {
-                                        "desc": "Cancella la coda.",
-                                        "sub": {}
+                                        "desc": "Cancella la coda."
                                     },
                                     "now": {
-                                        "desc": "Mostra la canzone attualmente in riproduzione.",
-                                        "sub": {}
+                                        "desc": "Mostra la canzone attualmente in riproduzione."
                                     }
                                 }
                             }
