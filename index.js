@@ -5,6 +5,7 @@ if (fs.existsSync(".env")) {
     dotenv.config();
 }
 
+const Client = require("./discordClient.js");
 const { localization } = require("./localization.js");
 const { defaults, database, Guild } = require("./database.js");
 const discord = require("discord.js");
@@ -12,7 +13,6 @@ const { CommandManager } = require("./commands/commands.js");
 const { formatString } = require("./utils.js");
 const Logger = require("./logging.js");
 
-const Client = new discord.Client();
 let botMention = "<@!{0}>";
 
 async function main() {
@@ -24,15 +24,15 @@ async function main() {
         Logger.debug(err);
     }
     await database.sync({ "alter": true });
-    Client.login(process.env.token);
+    Client.instance.login(process.env.token);
 }
 
-Client.on("ready", () => {
+Client.addEventListener("ready", () => {
     Logger.info("Bot started at " + (new Date()).toLocaleString());
-    botMention = formatString(botMention, Client.user.id);
+    botMention = formatString(botMention, Client.instance.user.id);
 });
 
-Client.on("message", async msg => {
+Client.addEventListener("message", async msg => {
     if (msg.channel.type != "text" && !msg.author.bot) {
         return;
     }
