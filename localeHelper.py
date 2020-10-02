@@ -42,10 +42,13 @@ def main():
             with open(path.join(localizationDIR, originLocale + ".json"), "r") as file:
                 locale = json.load(file)
             translate(locale, translated, originLocale)
+            print("Translation completed!")
             with open(path.join(localizationDIR, outputLocale + ".json"), "w") as file:
-                json.dump(translated, file, indent="    ")
+                json.dump(translated, file, ensure_ascii=False, indent="    ")
+            print("Translation saved!")
     else:
         print("Specified origin doesn't exist: " + originLocale)
+    input()
 
 if __name__ == "__main__":
     main()
