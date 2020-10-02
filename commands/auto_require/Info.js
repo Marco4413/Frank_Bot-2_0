@@ -24,6 +24,16 @@ module.exports = class Info extends Command {
         
         embed.title = locale.command.title;
 
+        let contributors = "";
+        appInfo.contributors.forEach(
+            (contributor, i) => {
+                contributors += formatString("<@{0}>:\n{1}{2}", contributor.discordID, locale.command.bulletList, contributor.contribution);
+                if (i < appInfo.contributors.length - 1) {
+                    contributor += "\n";
+                }
+            }
+        );
+
         let dependenciesDescription = "";
         Object.keys(appInfo.dependencies).forEach(
             (key, i) => {
@@ -62,6 +72,10 @@ module.exports = class Info extends Command {
                 {
                     "name": locale.command.repository,
                     "value": appInfo.repository.url
+                },
+                {
+                    "name": locale.command.contributors,
+                    "value": contributors
                 },
                 {
                     "name": locale.command.dependencies,
