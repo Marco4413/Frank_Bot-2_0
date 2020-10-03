@@ -32,19 +32,31 @@ Client.addEventListener("ready", () => {
     botMention = formatString(botMention, Client.instance.user.id);
 });
 
+Client.addEventListener("guildCreate", async guild => {
+    await Guild.findOrCreate({
+        "where": {
+            "id": guild.id
+        },
+        "defaults": {
+            "id": guild.id
+        }
+    });
+});
+
+Client.addEventListener("guildDelete", async guild => {
+    await Guild.destroy({
+        "where": {
+            "id": guild.id
+        }
+    });
+});
+
 Client.addEventListener("message", async msg => {
     if (msg.channel.type != "text" && !msg.author.bot) {
         return;
     }
 
-    const [ guildEntry ] = await Guild.findOrCreate({
-        "where": {
-            "id": msg.guild.id
-        },
-        "defaults": {
-            "id": msg.guild.id
-        }
-    });
+    const guildEntry = await Guild.findByPk(msg.guild.id);
 
     /**
      * @type {String}
