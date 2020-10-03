@@ -3,33 +3,23 @@ const Command = require("../command.js");
 const db = require("../../database.js");
 const { createDefaultEmbed, formatString, missingPerm } = require("../../utils.js");
 
+const Sequelize = require("sequelize");
 const ytdl = require("ytdl-core-discord");
 const ytsr = require("ytsr");
 
 /**
- * @typedef {Object} GuildQueue
- * @property {String} nowPlaying - The link to the currently playing song
- * @property {Array<String>} queue - An array of links to all the tracks
+ * Stores all songs that the bot is playing on all guilds
+ * @type {Object<String, String>}
  */
-
-/**
- * @type {Object<String, GuildQueue>}
- */
-const allQueues = {}
+const nowPlaying = {}
 
 /**
  * @param {String} guildID - The id of the guild
- * @param {Boolean} create - Whether or not to create a new entry on allQueues automatically
- * @returns {GuildQueue} Reference to the queue
+ * @returns {[Array<String>, Sequelize.Model]} The queue and the guild model
  */
-function getQueue(guildID, create) {
-    if (create && allQueues[guildID] === undefined) {
-        allQueues[guildID] = {
-            "nowPlaying": undefined,
-            "queue": []
-        };
-    }
-    return allQueues[guildID];
+async function getQueue(guildID) {
+    const guild = await db.Guild.findByPk(guildID);
+    return [ guild.get("queue"), guild ];
 }
 
 /**
@@ -37,9 +27,13 @@ function getQueue(guildID, create) {
  * @param {String} link - The link to the song to add
  * @returns {undefined}
  */
-function addToQueue(guildID, link) {
-    const queue = getQueue(guildID, true);
-    queue.queue.push(link);
+async function addToQueue(guildID, link) {
+    const [ queue, guild ] = await getQueue(guildID);
+    queue.push(link);
+    // Setting it to null first so that it recognizes that it has changed
+    guild.set("queue", null);
+    guild.set("queue", queue);
+    await guild.save({});
 }
 
 /**
@@ -48,15 +42,19 @@ function addToQueue(guildID, link) {
  * @returns {Boolean} Whether or not the bot started a new track
  */
 async function nextTrack(guildID, connection) {
-    const queue = getQueue(guildID, true);
-    queue.nowPlaying = queue.queue.shift();
+    const [queue, guild] = await getQueue(guildID);
+    nowPlaying[guildID] = queue.shift();
 
-    if (queue.nowPlaying === undefined) {
+    // Setting it to null first so that it recognizes that it has changed
+    guild.set("queue", null);
+    guild.set("queue", queue);
+    await guild.save();
+
+    if (nowPlaying[guildID] === undefined) {
         disconnect(connection);
         return false;
     }
-
-    const stream = await ytdl(queue.nowPlaying, { "filter": "audioonly" });
+    const stream = await ytdl(nowPlaying[guildID], { "filter": "audioonly" });
     const dispatcher = connection.play(stream, { "type": "opus" });
     dispatcher.on("finish", () => nextTrack(guildID, connection));
 
@@ -73,8 +71,7 @@ function disconnect(connection) {
     }
 
     connection.disconnect();
-    const queue = getQueue(connection.channel.guild.id, true);
-    queue.nowPlaying = undefined;
+    nowPlaying[connection.channel.guild.id] = undefined;
 }
 
 /**
@@ -150,7 +147,7 @@ class Play extends Command {
             return;
         }
 
-        addToQueue(msg.guild.id, info.videoDetails.video_url);
+        await addToQueue(msg.guild.id, info.videoDetails.video_url);
 
         const embed = createDefaultEmbed(msg);
 
@@ -217,8 +214,8 @@ class Join extends Command {
      * @returns {undefined}
      */
     async execute(args, msg, locale, canShortcut) {
-        const queue = getQueue(msg.guild.id, true);
-        if (queue.queue.length <= 0) {
+        const [ queue, guild ] = await getQueue(msg.guild.id);
+        if (queue.length <= 0) {
             msg.reply(locale.command.emptyQueue);
             return;
         }
@@ -288,12 +285,13 @@ class QueueList extends Command {
         const embed = createDefaultEmbed(msg);
         embed.title = formatString(locale.command.title, msg.guild.name);
 
-        const queue = getQueue(msg.guild.id, true);
-        if (queue.queue.length <= 0) {
+        const [ queue, guild ] = await getQueue(msg.guild.id);
+
+        if (queue.length <= 0) {
             embed.description = locale.command.empty;
         } else {
-            for (let i = 0; i < queue.queue.length; i++) {
-                const link = queue.queue[i];
+            for (let i = 0; i < queue.length; i++) {
+                const link = queue[i];
                 const info = await ytdl.getBasicInfo(link);
                 embed.addField(
                     formatString(locale.command.songName, info.videoDetails.title, info.videoDetails.author.name),
@@ -322,13 +320,15 @@ class QueueClear extends Command {
      * @returns {undefined}
      */
     async execute(args, msg, locale, canShortcut) {
-        const queue = getQueue(msg.guild.id, true);
-        if (queue.queue.length <= 0) {
+        const [ queue, guild ] = await getQueue(msg.guild.id);
+        if (queue.length <= 0) {
             msg.reply(formatString(locale.command.nothing, msg.guild.name));
             return;
         }
 
-        queue.queue = [];
+        guild.set("queue", []);
+        await guild.save();
+
         msg.reply(formatString(locale.command.succesful, msg.guild.name));
     }
 }
@@ -349,8 +349,7 @@ class QueueNow extends Command {
      * @returns {undefined}
      */
     async execute(args, msg, locale, canShortcut) {
-        const queue = getQueue(msg.guild.id, true);
-        const link = queue.nowPlaying;
+        const link = nowPlaying[msg.guild.id];
 
         if (link === undefined) {
             msg.reply(locale.command.nothing);

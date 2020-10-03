@@ -36,6 +36,11 @@ Guild.init({
         "type": DataTypes.STRING,
         "allowNull": false,
         "defaultValue": exports.defaults.language
+    },
+    "queue": {
+        "type": DataTypes.ARRAY(DataTypes.STRING),
+        "allowNull": false,
+        "defaultValue": []
     }
 }, {
     "sequelize": database,
