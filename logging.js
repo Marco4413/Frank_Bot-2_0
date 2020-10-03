@@ -2,28 +2,24 @@
 const fs = require("fs");
 const path = require("path");
 
-const Logger = {
-    "output": ""
-}
+exports.output = "";
 
-Logger.info = (...msg) => {
+exports.info = (...msg) => {
     const message = msg.join(" ");
     console.log(message);
-    Logger.output += "info : " + message + "\n";
+    exports.output += "info : " + message + "\n";
 }
 
-Logger.debug = function (...msg) {
+exports.debug = function (...msg) {
     if (process.env.debug_log == "true") {
         const message = msg.join(" ");
         console.debug(message);
-        Logger.output += "debug: " + message + "\n";
+        exports.output += "debug: " + message + "\n";
     }
 }
 
-Logger.save = () => {
+exports.save = () => {
     const date = new Date();
     const fileName = "log-" + date.toLocaleString() + ".txt";
-    fs.writeFileSync(path.resolve("./logs/", fileName.replace(/\/|\\|:|\*|\?|\"|<|>|\|/g, "_")), Logger.output);
+    fs.writeFileSync(path.resolve("./logs/", fileName.replace(/\/|\\|:|\*|\?|\"|<|>|\|/g, "_")), exports.output);
 }
-
-module.exports = Logger;
