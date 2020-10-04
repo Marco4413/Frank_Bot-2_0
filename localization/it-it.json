@@ -172,6 +172,7 @@
         }
     },
     "_common": {
+        "unknownCommand": "Comando sconosciuto: `{0}`",
         "missingPerm": "Ti manca il permesso \"{0}\"",
         "genericHelp": "Usa `help {0}` per ricevere aiuto inerente a questo comando",
         "perms": {

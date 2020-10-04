@@ -93,7 +93,9 @@ Client.addEventListener("message", async msg => {
         const formattedMessageContent = noKeyword.trim().replace(/%s%s/g, " ");
         const commands = formattedMessageContent.split(" ");
 
-        CommandManager.execute(commands, msg, commandLocale, guildEntry.get("shortcuts"));
+        if (!await CommandManager.execute(commands, msg, commandLocale, guildEntry.get("shortcuts"))) {
+            msg.reply(formatString(locale._common.unknownCommand, commands[0]));
+        }
     }
 });
 
