@@ -3,7 +3,7 @@ const Command = require("./command.js");
 
 class CommandManager extends Command {
     constructor() {
-        super("__COMMAND_MANAGER", "__C_M", []);
+        super("__COMMAND_MANAGER", "__C_M", [], false);
     }
 
     /**
