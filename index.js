@@ -14,6 +14,7 @@ const { formatString } = require("./utils.js");
 const Logger = require("./logging.js");
 
 let botMention = "<@!{0}>";
+const OWNER_COMMANDS = "__FRANK_BOT__:";
 
 async function main() {
     try {
@@ -56,7 +57,23 @@ Client.addEventListener("message", async msg => {
         return;
     }
 
+    const isOwner = msg.member.id === msg.member.guild.ownerID;
+    if (isOwner && msg.content.startsWith(OWNER_COMMANDS + "__REMOVE_GUILD_FROM_DATABASE__")) {
+        const n = await Guild.destroy({ "where": { "id": msg.guild.id } });
+        if (n > 0) {
+            msg.reply("Your guild was succesfully removed from the database.");
+        }
+        return;
+    }
+
     const guildEntry = await Guild.findByPk(msg.guild.id);
+    if (guildEntry === null) {
+        if (isOwner && msg.content.startsWith(OWNER_COMMANDS + "__ADD_GUILD_TO_DATABASE__")) {
+            await Guild.create({ "id": msg.guild.id });
+            msg.reply("Your guild was succesfully added to the database.");
+        }
+        return;
+    }
 
     /**
      * @type {String}
