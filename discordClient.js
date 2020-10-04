@@ -1,6 +1,9 @@
 
 const discord = require("discord.js");
 
+/**
+ * The discord client currently in use
+ */
 exports.instance = new discord.Client();
 
 /**
@@ -9,12 +12,13 @@ exports.instance = new discord.Client();
 const callbacks = {}
 
 /**
+ * Adds an event listener to the specified event
  * @template {keyof discord.ClientEvents} K
- * @param {K} event
- * @param {(...args: discord.ClientEvents[K]) => Boolean} callback
- * @returns {discord.Client}
+ * @param {K} event - The event to listen to
+ * @param {(...args: discord.ClientEvents[K]) => Boolean} listener - The listener for the event
+ * @returns {discord.Client} The discord client
  */
-exports.addEventListener = (event, callback) => {
+exports.addEventListener = (event, listener) => {
 
     // If it's the first time we see this event
     if (callbacks[event] === undefined) {
@@ -23,11 +27,11 @@ exports.addEventListener = (event, callback) => {
         // Add main event listener
         exports.instance.on(event, async (...args) => {
             /**
-             * The Array with all the callbacks to this event
+             * The Array with all the listeners to this event
              * @type {Array<() => Boolean>}
              */
             const eventCallbacks = callbacks[event];
-            // For each callback
+            // For each listener
             for (let i = 0; i < eventCallbacks.length; i++) {
                 // Call it and if it returns true
                 if (await eventCallbacks[i](...args)) {
@@ -38,8 +42,8 @@ exports.addEventListener = (event, callback) => {
         });
     }
 
-    // Finally add the callback to its array
-    callbacks[event].push(callback);
+    // Finally add the listener to its array
+    callbacks[event].push(listener);
 
     return exports.instance;
 }
