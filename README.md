@@ -9,7 +9,7 @@
 
  - There are currently 2 main python scripts:
   1. `localeHelper.py` which is used to make translating to other locales easier, just follow the steps that it asks you
-  2. `commands/createCommand.py` which is used to create a new command, it must be opened from the terminal with an argument which will be the name of the new command (NOTE: To make the new command automatically be recognized by the bot it should be moved to `commands/auto_require` and all required libraries paths should be changed to be relative to the new path, there's no need to change other files' contents, only the command file should be modified)
+  2. `createCommand.py` which is used to create a new command, just follow its instructions to create a new command (NOTE: If the command is moved from `commands/` then you should require it manually on `commands.js`)
 
 ## Steps to run this project:
 
