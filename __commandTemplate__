@@ -1,0 +1,23 @@
+const discord = require("discord.js");
+const Command = require("../command.js");
+const db = require("../database.js");
+const { formatString, missingPerm } = require("../utils.js");
+
+module.exports = class __COMMAND_CLASS_NAME__ extends Command {
+    constructor() {
+        super(__COMMAND_NAME__);
+    }
+
+    /**
+     * @param {Array<String>} args - Command's arguments
+     * @param {discord.Message} msg - The message that triggered the command
+     * @param {Object} locale - Localization
+     * @param {Object} locale.command - Command's locale
+     * @param {Object} locale.common - Common locale
+     * @param {Boolean} canShortcut - Whether or not shortcuts can be used
+     * @returns {undefined}
+     */
+    async execute(args, msg, locale, canShortcut) {
+        
+    }
+}

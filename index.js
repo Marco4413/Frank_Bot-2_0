@@ -9,7 +9,7 @@ const Client = require("./discordClient.js");
 const { localization } = require("./localization.js");
 const { defaults, database, Guild } = require("./database.js");
 const discord = require("discord.js");
-const { CommandManager } = require("./commands/commands.js");
+const { CommandManager } = require("./commands.js");
 const { formatString } = require("./utils.js");
 const Logger = require("./logging.js");
 

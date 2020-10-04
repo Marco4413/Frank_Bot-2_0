@@ -1,5 +1,5 @@
 
-const Command = require("./command");
+const Command = require("./command.js");
 
 class CommandManager extends Command {
     constructor() {
@@ -49,7 +49,7 @@ exports.CommandManager = new CommandManager();
 const fs = require("fs");
 const path = require("path");
 
-const autoRequireFolder = path.join(__dirname, "auto_require");
+const autoRequireFolder = path.join(__dirname, "commands");
 const commandsToRequire = fs.readdirSync(autoRequireFolder);
 commandsToRequire.forEach(relPath => {
     const Command = require(path.join(autoRequireFolder, relPath));

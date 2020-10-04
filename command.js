@@ -1,6 +1,6 @@
 
 const discord = require("discord.js");
-const { formatString } = require("../utils.js");
+const { formatString } = require("./utils.js");
 
 class Command {
     /**

@@ -1,9 +1,9 @@
 const discord = require("discord.js");
 const Command = require("../command.js");
-const db = require("../../database.js");
-const { createDefaultEmbed, formatString, missingPerm } = require("../../utils.js");
+const db = require("../database.js");
+const { createDefaultEmbed, formatString, missingPerm } = require("../utils.js");
 
-const appInfo = require("../../package.json");
+const appInfo = require("../package.json");
 
 module.exports = class Info extends Command {
     constructor() {

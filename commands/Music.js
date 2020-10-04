@@ -1,7 +1,7 @@
 const discord = require("discord.js");
 const Command = require("../command.js");
-const db = require("../../database.js");
-const { createDefaultEmbed, formatString, missingPerm } = require("../../utils.js");
+const db = require("../database.js");
+const { createDefaultEmbed, formatString, missingPerm } = require("../utils.js");
 
 const Sequelize = require("sequelize");
 const ytdl = require("ytdl-core-discord");
