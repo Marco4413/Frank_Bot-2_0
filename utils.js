@@ -76,3 +76,11 @@ exports.traverseObject = (object, path) => {
     return oldReference;
 }
 
+/**
+ * Removes all mention characters from the specified string
+ * @param {String} str - The string to work with
+ * @returns {String} The ID that was mentioned
+ */
+exports.removeMention = (str) => {
+    return str.replace(/<|@|!|#|>/g, "");
+}
