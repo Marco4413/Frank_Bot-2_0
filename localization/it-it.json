@@ -76,6 +76,9 @@
                             }
                         }
                     }
+                },
+                "sendEmbed": {
+                    "desc": "Invia un messaggio embed in un canale usando l'oggetto JSON specificato di tipo MessageEmbedOptions di Discord.js"
                 }
             }
         }
@@ -170,6 +173,14 @@
                 "nothing": "La coda di {0} è già vuota."
             }
         }
+    },
+    "sendEmbed": {
+        "sent": "Il messaggio è stato inviato!",
+        "noChannel": "Devi specificare un canale testuale.",
+        "invalidChannel": "Il canale specificato non è valido.",
+        "noTextChannel": "Il canale specificato dev'essere testuale.",
+        "noSendPremission": "Non hai il permesso di inviare messaggi nel canale specificato.",
+        "invalidJSON": "L'oggetto JSON che hai inviato è invalido, risolvi gli errori e riprova."
     },
     "_common": {
         "unknownCommand": "Comando sconosciuto: `{0}`",

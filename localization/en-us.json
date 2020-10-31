@@ -76,6 +76,9 @@
                             }
                         }
                     }
+                },
+                "sendEmbed": {
+                    "desc": "Sends an embed message to a channel using the specified JSON config of type MessageEmbedOptions from Discord.js"
                 }
             }
         }
@@ -170,6 +173,14 @@
                 "nothing": "{0}'s queue is already empty."
             }
         }
+    },
+    "sendEmbed": {
+        "sent": "The message was sent!",
+        "noChannel": "You must specify a text channel.",
+        "invalidChannel": "The channel you specified is invalid.",
+        "noTextChannel": "The specified channel must be a text one.",
+        "noSendPremission": "You don't have permissions to send messages to the specified channel.",
+        "invalidJSON": "The JSON string you've sent is invalid, please fix it and try again."
     },
     "_common": {
         "unknownCommand": "Unknown Command: `{0}`",
