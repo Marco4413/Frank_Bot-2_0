@@ -4,7 +4,7 @@ const db = require("../database.js");
 const { createDefaultEmbed, formatString, missingPerm } = require("../utils.js");
 
 const Sequelize = require("sequelize");
-const ytdl = require("ytdl-core-discord");
+const ytdl = require("discord-ytdl-core");
 const ytsr = require("ytsr");
 
 /**
@@ -54,7 +54,7 @@ async function nextTrack(guildID, connection) {
         disconnect(connection);
         return false;
     }
-    const stream = await ytdl(nowPlaying[guildID], { "filter": "audioonly" });
+    const stream = ytdl(nowPlaying[guildID], { "filter": "audioonly", "opusEncoded": true });
     const dispatcher = connection.play(stream, { "type": "opus" });
     dispatcher.on("finish", () => nextTrack(guildID, connection));
 
@@ -127,6 +127,10 @@ class Play extends Command {
         } else if (ytdl.validateID(search)) {
             link += search;
         } else {
+            // TODO: UPDATE YTSR ASAP
+            msg.reply("For now I can't search videos on YT, because of api changes. Please use links instead.");
+            return;
+
             search = args.join(" ");
             const results = await ytsr(search, {
                 "limit": 5
