@@ -68,9 +68,11 @@ async function nextTrack(guildID, connection) {
 function disconnect(connection) {
     if (connection.dispatcher !== null) {
         connection.dispatcher.on("finish", () => {});
+        connection.dispatcher.end(connection.disconnect);
+    } else {
+        connection.disconnect();
     }
 
-    connection.disconnect();
     nowPlaying[connection.channel.guild.id] = undefined;
 }
 
