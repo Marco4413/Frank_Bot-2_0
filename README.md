@@ -1,5 +1,54 @@
 # Frank Bot 2.0
 
+## How does an Embed JSON object look like (used with `sendembed` command)?
+
+```js
+{
+  "author": {
+    "iconURL": "https://cdn.discordapp.com/avatars/599978506042212364/f9ef158c3169192bcf55ea26bcaf0b0f.png",
+    "name": "The author field can also be set to \"me\", \"guild\", \"bot\" or \"ID of someone\"",
+    "url": "https://github.com/hds536jhmk/Frank_Bot-2_0"
+  },
+  "color": "#0000ff",
+  "description": "The description to the message",
+  "fields": [
+    {
+      "inline": false,
+      "name": "First Field",
+      "value": "Description of the field."
+    },
+    {
+      "inline": false,
+      "name": "Second Field",
+      "value": "Description of the field."
+    }
+  ],
+  "files": [
+    "https://raw.githubusercontent.com/hds536jhmk/Frank_Bot-2_0/master/README.md"
+  ],
+  "footer": {
+    "iconURL": "guild",
+    "text": "The iconURL field can also be set to \"me\", \"guild\", \"bot\" or \"ID of someone\""
+  },
+  "image": {
+    "url": "https://cdn.discordapp.com/avatars/599978506042212364/f9ef158c3169192bcf55ea26bcaf0b0f.png",
+    "width": 250,
+    "height": 250
+  },
+  "thumbnail": {
+    "url": "https://cdn.discordapp.com/avatars/599978506042212364/f9ef158c3169192bcf55ea26bcaf0b0f.png",
+    "width": 100,
+    "height": 100
+  },
+  "timestamp": "auto",
+  "title": "The Title of the Message",
+  "url": "https://github.com/hds536jhmk/Frank_Bot-2_0",
+  "video": {
+    "url": "An URL to a video"
+  }
+}
+```
+
 ## What version are python scripts made for and what libraries do they use?
 
  - The version of Python currently in use is "Python 3.8"
