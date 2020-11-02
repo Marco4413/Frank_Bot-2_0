@@ -37,13 +37,13 @@ exports.formatString = (str, ...formats) => {
 }
 
 /**
- * Sends a message using sender and a default string
- * @param {Function} sender - The function that sends the message
+ * Returns a string which will say that the user doesn't have said permission
  * @param {String} permission - The premission that is missing
  * @param {Object} locale - The current common locale
+ * @returns {String} The formatted string
  */
-exports.missingPerm = (sender, permission, locale) => {
-    sender(this.formatString(locale.missingPerm, locale.perms[permission]));
+exports.missingPerm = (permission, locale) => {
+    return exports.formatString(locale.missingPerm, locale.perms[permission]);
 }
 
 /**

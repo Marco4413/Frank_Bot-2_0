@@ -19,7 +19,7 @@ module.exports = class Shortcuts extends Command {
      */
     async execute(args, msg, locale, canShortcut) {
         if (!msg.member.hasPermission("ADMINISTRATOR")) {
-            missingPerm(msg.reply, "ADMINISTRATOR", locale.common);
+            msg.reply(missingPerm("ADMINISTRATOR", locale.common));
             return;
         }
 

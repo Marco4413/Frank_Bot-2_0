@@ -19,7 +19,7 @@ module.exports = class Purge extends Command {
      */
     async execute(args, msg, locale, canShortcut) {
         if (!msg.member.hasPermission("MANAGE_MESSAGES")) {
-            missingPerm(msg.reply, "MANAGE_MESSAGES", locale.common);
+            msg.reply(missingPerm("MANAGE_MESSAGES", locale.common));
             return;
         }
 
