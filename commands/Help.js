@@ -30,7 +30,7 @@ function fillHelpEmbed(embed, paths, locale) {
 
     // Sets embed's title and description
     embed.title = formatString(locale.title, capitalize(commandName));
-    embed.description = page.desc;
+    embed.description = page.longDesc === undefined ? page.desc : page.longDesc;
 
     if (page.sub === undefined) {
         // If there isn't any subcommand then add the noChildren text

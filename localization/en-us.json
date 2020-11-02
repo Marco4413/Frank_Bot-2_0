@@ -77,8 +77,9 @@
                         }
                     }
                 },
-                "sendEmbed": {
-                    "desc": "Sends an embed message to a channel using the specified JSON config of type MessageEmbedOptions from Discord.js"
+                "sendembed": {
+                    "desc": "Sends an embed message to a channel using the specified JSON config.",
+                    "longDesc": "Sends an embed message to a channel using the specified JSON config, an example of JSON config can be found at the bot's GitHub Repo."
                 }
             }
         }
@@ -174,7 +175,7 @@
             }
         }
     },
-    "sendEmbed": {
+    "sendembed": {
         "sent": "The message was sent!",
         "noChannel": "You must specify a text channel.",
         "invalidChannel": "The channel you specified is invalid.",
