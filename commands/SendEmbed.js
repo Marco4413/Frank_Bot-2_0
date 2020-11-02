@@ -3,9 +3,83 @@ const Command = require("../command.js");
 const db = require("../database.js");
 const { formatString, missingPerm, removeMention } = require("../utils.js");
 
-module.exports = class Sendembed extends Command {
+/**
+ * Parses a user's embed to add more functionality to it
+ * @param {discord.Message} msg - The message that requested the embed
+ * @param {discord.MessageEmbedOptions} config - The config sent by the user
+ * @returns {discord.MessageEmbedOptions} The parsed Embed config
+ */
+async function parseUserEmbed(msg, config) {
+    switch (config.author) {
+        case "me": {
+            config.author = {};
+            config.author.iconURL = msg.author.displayAvatarURL({ "dynamic": true });
+            config.author.name = msg.member.displayName;
+            break;
+        }
+        case "guild": {
+            config.author = {};
+            config.author.iconURL = msg.guild.iconURL({ "dynamic": true });
+            config.author.name = msg.guild.name;
+            break;
+        }
+        case "bot": {
+            config.author = {};
+            config.author.iconURL = msg.guild.me.user.displayAvatarURL({ "dynamic": true });
+            config.author.name = msg.guild.me.displayName;
+            break;
+        }
+        default: {
+            const authorType = typeof config.author;
+            if (authorType === "string") {
+                const userID = removeMention(config.author);
+                try {
+                    const member = await msg.guild.members.fetch(userID);
+                    config.author = {};
+                    config.author.iconURL = member.user.displayAvatarURL({ "dynamic": true });
+                    config.author.name = member.displayName;
+                } catch (error) {}
+            }
+        }
+    }
+
+    if (typeof config.footer === "object") {
+        switch (config.footer.iconURL) {
+            case "me": {
+                config.footer.iconURL = msg.author.displayAvatarURL({ "dynamic": true });
+                break;
+            }
+            case "guild": {
+                config.footer.iconURL = msg.guild.iconURL({ "dynamic": true });
+                break;
+            }
+            case "bot": {
+                config.footer.iconURL = msg.guild.me.user.displayAvatarURL({ "dynamic": true });
+                break;
+            }
+            default: {
+                const authorType = typeof config.footer.iconURL;
+                if (authorType === "string") {
+                    const userID = removeMention(config.footer.iconURL);
+                    try {
+                        const member = await msg.guild.members.fetch(userID);
+                        config.footer.iconURL = member.user.displayAvatarURL({ "dynamic": true });
+                    } catch (error) {}
+                }
+            }
+        }
+    }
+
+    if (config.timestamp === "auto") {
+        config.timestamp = new Date();
+    }
+
+    return config;
+}
+
+module.exports = class SendEmbed extends Command {
     constructor() {
-        super("sendEmbed", "se");
+        super("sendembed", "se");
     }
 
     /**
@@ -28,7 +102,7 @@ module.exports = class Sendembed extends Command {
             /**
              * @param {discord.TextChannel} channel
              */
-            channel => {
+            async channel => {
                 if (channel.type !== "text") {
                     msg.reply(locale.command.noTextChannel);
                     return;
@@ -44,18 +118,15 @@ module.exports = class Sendembed extends Command {
                     /**
                      * @type {discord.MessageEmbedOptions}
                      */
-                    const embedConfig = JSON.parse(args.join(" "));
-                    if (embedConfig.timestamp === "auto") {
-                        embedConfig.timestamp = new Date();
-                    }
+                    const userConfig = JSON.parse(args.join(" "));
+                    const embedConfig = await parseUserEmbed(msg, userConfig);
 
-                    channel.send(new discord.MessageEmbed(embedConfig));
+                    await channel.send(new discord.MessageEmbed(embedConfig));
                     msg.reply(locale.command.sent);
                 } catch (error) {
                     msg.reply(locale.command.invalidJSON);
                     return;
                 }
-
             }
         ).catch(
             err => msg.reply(locale.command.invalidChannel)
