@@ -39,9 +39,10 @@ async function addToQueue(guildID, link) {
 /**
  * @param {String} guildID - The id of the guild
  * @param {discord.VoiceConnection} connection - The bot's connection to the guild
+ * @param {Number} depth - Used internally
  * @returns {Boolean} Whether or not the bot started a new track
  */
-async function nextTrack(guildID, connection) {
+async function nextTrack(guildID, connection, depth = 0) {
     const [queue, guild] = await getQueue(guildID);
     if (guild.get("isLooping")) {
         queue.push(queue[0]);
@@ -53,11 +54,24 @@ async function nextTrack(guildID, connection) {
     guild.set("queue", queue);
     await guild.save();
 
-    if (nowPlaying[guildID] === undefined) {
+    if (nowPlaying[guildID] === undefined || depth > 10) {
+        nowPlaying[guildID] = undefined;
         disconnect(connection);
         return false;
     }
-    const stream = ytdl(nowPlaying[guildID], { "filter": "audioonly", "opusEncoded": true });
+
+    let attempt = 0;
+    let stream = null;
+    while (stream === null) {
+        if (attempt++ > 10) {
+            return nextTrack(guildID, connection, depth + 1);
+        }
+
+        try {
+            stream = ytdl(nowPlaying[guildID], { "filter": "audioonly", "opusEncoded": true });
+        } catch (error) { }
+    }
+
     const dispatcher = connection.play(stream, { "type": "opus" });
     dispatcher.on("speaking", isSpeaking => {
         if (!isSpeaking) {
