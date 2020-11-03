@@ -43,6 +43,9 @@ async function addToQueue(guildID, link) {
  */
 async function nextTrack(guildID, connection) {
     const [queue, guild] = await getQueue(guildID);
+    if (guild.get("isLooping")) {
+        queue.push(queue[0]);
+    }
     nowPlaying[guildID] = queue.shift();
 
     // Setting it to null first so that it recognizes that it has changed
@@ -56,7 +59,11 @@ async function nextTrack(guildID, connection) {
     }
     const stream = ytdl(nowPlaying[guildID], { "filter": "audioonly", "opusEncoded": true });
     const dispatcher = connection.play(stream, { "type": "opus" });
-    dispatcher.on("finish", () => nextTrack(guildID, connection));
+    dispatcher.on("speaking", isSpeaking => {
+        if (!isSpeaking) {
+            nextTrack(guildID, connection);
+        }
+    });
 
     return true;
 }
@@ -67,7 +74,7 @@ async function nextTrack(guildID, connection) {
  */
 function disconnect(connection) {
     if (connection.dispatcher !== null) {
-        connection.dispatcher.on("finish", () => {});
+        connection.dispatcher.on("speaking", () => {});
         connection.dispatcher.end(connection.disconnect);
     } else {
         connection.disconnect();
@@ -125,7 +132,7 @@ class Play extends Command {
 
         let search = args[0];
         if (ytdl.validateURL(search)) {
-            link = search;
+            link = search.replace(/<|>/g, "");
         } else if (ytdl.validateID(search)) {
             link += search;
         } else {
@@ -272,6 +279,31 @@ class Disconnect extends Command {
     }
 }
 
+// Loops the queue
+class QueueLoop extends Command {
+    constructor() {
+        super("loop", "lp");
+    }
+
+    /**
+     * @param {Array<String>} args - Command's arguments
+     * @param {discord.Message} msg - The message that triggered the command
+     * @param {Object} locale - Localization
+     * @param {Object} locale.command - Command's locale
+     * @param {Object} locale.common - Common locale
+     * @param {Boolean} canShortcut - Whether or not shortcuts can be used
+     * @returns {undefined}
+     */
+    async execute(args, msg, locale, canShortcut) {
+        const guild = await db.Guild.findByPk(msg.guild.id);
+        const isLooping = guild.get("isLooping");
+        guild.set("isLooping", !isLooping);
+        await guild.save();
+
+        msg.reply(isLooping ? locale.command.notLooping : locale.command.looping);
+    }
+}
+
 // Lists all elements in the queue
 class QueueList extends Command {
     constructor() {
@@ -296,6 +328,10 @@ class QueueList extends Command {
         if (queue.length <= 0) {
             embed.description = locale.command.empty;
         } else {
+            if (guild.get("isLooping")) {
+                embed.description = locale.command.looping;
+            }
+
             for (let i = 0; i < queue.length; i++) {
                 const link = queue[i];
                 const info = await ytdl.getBasicInfo(link);
@@ -370,7 +406,7 @@ class QueueNow extends Command {
 // All commands related to queue management
 class Queue extends Command {
     constructor() {
-        super("queue", "q", [ new QueueList(), new QueueClear(), new QueueNow() ]);
+        super("queue", "q", [ new QueueLoop(), new QueueList(), new QueueClear(), new QueueNow() ]);
     }
 
     /**

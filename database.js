@@ -12,7 +12,8 @@ const database = new Sequelize(process.env.db_name, process.env.db_username, pro
 exports.defaults = {
     "prefix": "!",
     "shortcuts": true,
-    "language": "en-us"
+    "language": "en-us",
+    "isLooping": false
 }
 
 class Guild extends Model {}
@@ -36,6 +37,11 @@ Guild.init({
         "type": DataTypes.STRING,
         "allowNull": false,
         "defaultValue": exports.defaults.language
+    },
+    "isLooping": {
+        "type": DataTypes.BOOLEAN,
+        "allowNull": false,
+        "defaultValue": exports.defaults.isLooping
     },
     "queue": {
         "type": DataTypes.ARRAY(DataTypes.STRING),

@@ -64,6 +64,9 @@
                         "queue": {
                             "desc": "Manages guild's queue.",
                             "sub": {
+                                "loop": {
+                                    "desc": "Loops the queue."
+                                },
                                 "list": {
                                     "desc": "Lists all tracks on the queue."
                                 },
@@ -159,7 +162,12 @@
             "notConnected": "I must be in a voice channel for you to perform this command."
         },
         "queue": {
+            "loop": {
+                "looping": "The queue is now in loop!",
+                "notLooping": "The queue isn't looping anymore."
+            },
             "list": {
+                "looping": "The queue is currently looping!",
                 "title": "{0}'s queue:",
                 "empty": "No songs on queue",
                 "songName": "{0} made by {1}",

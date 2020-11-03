@@ -64,6 +64,9 @@
                         "queue": {
                             "desc": "Gestisce la coda della gilda.",
                             "sub": {
+                                "loop": {
+                                    "desc": "Mette in loop la coda."
+                                },
                                 "list": {
                                     "desc": "Mostra tutti i brani in coda."
                                 },
@@ -159,6 +162,10 @@
             "notConnected": "Devo essere in un canale vocale perchè tu possa usare questo comando."
         },
         "queue": {
+            "loop": {
+                "looping": "La coda è in loop!",
+                "notLooping": "La coda non è più in loop."
+            },
             "list": {
                 "title": "La coda di {0}:",
                 "empty": "Nessun brano in coda",
