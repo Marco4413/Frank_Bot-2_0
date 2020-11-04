@@ -143,7 +143,8 @@
             "videoNotFound": "Non è stato possibile trovare il video specificato.",
             "notSameChannel": "Devi essere nel mio stesso canale per usare questo comando.",
             "notConnected": "Devi essere connesso ad un canale vocale per usare questo comando.",
-            "notJoinable": "Non è stato possibile entrare nel tuo canale, perfavore usane uno in cui posso entrare."
+            "notJoinable": "Non è stato possibile entrare nel tuo canale, perfavore usane uno in cui posso entrare.",
+            "error": "C'è stato un'errore durante la raccolta delle informazioni sul video specificato.\n<{0}>"
         },
         "skip": {
             "succesful": "Saltando il brano corrente.",
@@ -170,11 +171,13 @@
                 "title": "La coda di {0}:",
                 "empty": "Nessun brano in coda",
                 "songName": "{0} fatta da {1}",
-                "description": "Durata: {0} minuti"
+                "description": "Durata: {0} minuti",
+                "error": "C'è stato un errore durante la raccolta di informazioni su questo video."
             },
             "now": {
                 "playing": "Riproducendo {0}",
-                "nothing": "Non sto riproducendo nulla al momento."
+                "nothing": "Non sto riproducendo nulla al momento.",
+                "error": "C'è stato un errore durante la raccolta di informazioni sul video in riproduzione.\n<{0}>"
             },
             "clear": {
                 "succesful": "La coda di {0} è stata svuotata.",

@@ -143,7 +143,8 @@
             "videoNotFound": "Couldn't find the specified video.",
             "notSameChannel": "You must be in the same voice channel as mine to use this command.",
             "notConnected": "You must be connected to a voice channel to use this command.",
-            "notJoinable": "Couldn't join your voice channel, please use one that I can join."
+            "notJoinable": "Couldn't join your voice channel, please use one that I can join.",
+            "error": "There was an error while trying to retrieve information about the video you specified.\n<{0}>"
         },
         "skip": {
             "succesful": "Skipping current track.",
@@ -171,11 +172,13 @@
                 "title": "{0}'s queue:",
                 "empty": "No songs on queue",
                 "songName": "{0} made by {1}",
-                "description": "Duration: {0} minutes"
+                "description": "Duration: {0} minutes",
+                "error": "There was an error while trying to retrieve information about this video."
             },
             "now": {
                 "playing": "Now playing {0}",
-                "nothing": "I'm not playing anything at the moment."
+                "nothing": "I'm not playing anything at the moment.",
+                "error": "There was an error while trying to retrieve information about the currently playing video.\n<{0}>"
             },
             "clear": {
                 "succesful": "{0}'s queue was cleared.",

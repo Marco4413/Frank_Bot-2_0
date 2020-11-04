@@ -89,10 +89,9 @@ async function nextTrack(guildID, connection, depth = 0) {
 function disconnect(connection) {
     if (connection.dispatcher !== null) {
         connection.dispatcher.on("speaking", () => {});
-        connection.dispatcher.end(connection.disconnect);
-    } else {
-        connection.disconnect();
     }
+
+    connection.disconnect();
 
     nowPlaying[connection.channel.guild.id] = undefined;
 }
@@ -168,7 +167,16 @@ class Play extends Command {
             link = vid.link;
         }
 
-        const info = await ytdl.getBasicInfo(link);
+        let info = null;
+        try {
+            info = await ytdl.getBasicInfo(link);
+        } catch (error) {}
+
+        if (info === null) {
+            msg.reply(formatString(locale.command.error, link));
+            return;
+        }
+
         if (info.videoDetails.lengthSeconds > 600) {
             msg.reply(formatString(locale.command.tooLong, "10"));
             return;
@@ -348,11 +356,18 @@ class QueueList extends Command {
 
             for (let i = 0; i < queue.length; i++) {
                 const link = queue[i];
-                const info = await ytdl.getBasicInfo(link);
-                embed.addField(
-                    formatString(locale.command.songName, info.videoDetails.title, info.videoDetails.author.name),
-                    formatString(locale.command.description, Math.round(info.videoDetails.lengthSeconds / 60))
-                );
+                try {
+                    const info = await ytdl.getBasicInfo(link);
+                    embed.addField(
+                        formatString(locale.command.songName, info.videoDetails.title, info.videoDetails.author.name),
+                        formatString(locale.command.description, Math.round(info.videoDetails.lengthSeconds / 60))
+                    );
+                } catch (error) {
+                    embed.addField(
+                        link,
+                        locale.command.error
+                    );
+                }
             }
         }
 
@@ -412,8 +427,12 @@ class QueueNow extends Command {
             return;
         }
 
-        const info = await ytdl.getBasicInfo(link);
-        msg.reply(formatString(locale.command.playing, info.videoDetails.title));
+        try {
+            const info = await ytdl.getBasicInfo(link);
+            msg.reply(formatString(locale.command.playing, info.videoDetails.title));
+        } catch (error) {
+            msg.reply(formatString(locale.command.error, String(link)));
+        }
     }
 }
 
