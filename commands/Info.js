@@ -51,11 +51,13 @@ module.exports = class Info extends Command {
             [
                 {
                     "name": locale.command.name,
-                    "value": "Frank Bot 2.0"
+                    "value": "Frank Bot 2.0",
+                    "inline": true
                 },
                 {
                     "name": locale.command.version,
-                    "value": appInfo.version
+                    "value": appInfo.version,
+                    "inline": true
                 },
                 {
                     "name": locale.command.description,
@@ -63,11 +65,13 @@ module.exports = class Info extends Command {
                 },
                 {
                     "name": locale.command.author,
-                    "value": appInfo.author
+                    "value": appInfo.author,
+                    "inline": true
                 },
                 {
                     "name": locale.command.copyright,
-                    "value": appInfo.license
+                    "value": appInfo.license,
+                    "inline": true
                 },
                 {
                     "name": locale.command.repository,
