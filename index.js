@@ -53,7 +53,7 @@ Client.addEventListener("guildDelete", async guild => {
 });
 
 Client.addEventListener("message", async msg => {
-    if (msg.channel.type != "text" && !msg.author.bot) {
+    if (msg.channel.type !== "text" || msg.author.bot) {
         return;
     }
 
