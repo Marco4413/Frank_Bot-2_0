@@ -149,10 +149,6 @@ class Play extends Command {
         } else if (ytdl.validateID(search)) {
             link += search;
         } else {
-            // TODO: UPDATE YTSR ASAP
-            msg.reply("For now I can't search videos on YT, because of api changes. Please use links instead.");
-            return;
-
             search = args.join(" ");
             const results = await ytsr(search, {
                 "limit": 5
@@ -164,7 +160,7 @@ class Play extends Command {
                 return;
             }
 
-            link = vid.link;
+            link = vid.url;
         }
 
         let info = null;
@@ -191,7 +187,7 @@ class Play extends Command {
                 embed
                     .setTitle(formatString(locale.command.playing, info.videoDetails.title))
                     .setURL(link)
-                    .setThumbnail(info.videoDetails.thumbnail.thumbnails[0].url)
+                    .setThumbnail(info.videoDetails.thumbnails[0].url)
                     .setDescription(
                         formatString(
                             "{0}\n{1}\n{2}",

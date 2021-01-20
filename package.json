@@ -1,6 +1,6 @@
 {
    "name": "frank_bot-2_0",
-   "version": "2.0.5",
+   "version": "2.0.6",
    "description": "The Second iteration of Frank Bot",
    "main": "index.js",
    "scripts": {
@@ -28,13 +28,15 @@
    ],
    "dependencies": {
       "@discordjs/opus": "^0.3.3",
-      "discord-ytdl-core": "^4.1.3",
-      "discord.js": "^12.4.1",
+      "discord-ytdl-core": "^4.1.5",
+      "discord.js": "^12.5.1",
       "dotenv": "^8.2.0",
+      "ffmpeg-static": "^4.2.7",
       "libsodium-wrappers": "^0.7.8",
-      "pg": "^8.4.2",
+      "pg": "^8.5.1",
       "pg-hstore": "^2.3.3",
-      "sequelize": "^6.3.5",
-      "ytsr": "^1.0.4"
+      "sequelize": "^6.4.0",
+      "ytdl-core": "^4.4.4",
+      "ytsr": "^3.2.2"
    }
 }
