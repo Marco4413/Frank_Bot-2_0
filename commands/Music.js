@@ -150,17 +150,23 @@ class Play extends Command {
             link += search;
         } else {
             search = args.join(" ");
-            const results = await ytsr(search, {
-                "limit": 5
-            });
-
-            const vid = results.items[0];
-            if (vid === undefined) {
-                msg.reply(locale.command.videoNotFound);
+            const videoQuery = (await ytsr.getFilters(search)).get("Type").get("Video").url;
+            if (videoQuery === null) {
+                msg.reply(formatString(locale.command.error, search));
                 return;
+            } else {
+                const results = await ytsr(videoQuery, {
+                    "limit": 5
+                });
+    
+                const vid = results.items[0];
+                if (vid === undefined) {
+                    msg.reply(locale.command.videoNotFound);
+                    return;
+                }
+    
+                link = vid.url;
             }
-
-            link = vid.url;
         }
 
         let info = null;
