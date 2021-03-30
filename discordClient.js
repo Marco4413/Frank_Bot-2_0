@@ -1,10 +1,13 @@
 
 const discord = require("discord.js");
 
+const intents = new discord.Intents(discord.Intents.NON_PRIVILEGED);
+intents.add("GUILD_MEMBERS");
+
 /**
  * The discord client currently in use
  */
-exports.instance = new discord.Client();
+exports.instance = new discord.Client({ "ws": { "intents": intents } });
 
 /**
  * @type {Object<String, Array>}

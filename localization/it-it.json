@@ -15,6 +15,9 @@
                 "info": {
                     "desc": "Usato per mostrare informazioni sul bot."
                 },
+                "oldest": {
+                    "desc": "Usato per mostrare una lista degli utenti più anziani della gilda."
+                },
                 "prefix": {
                     "desc": "Usato per mostrare o cambiare il prefisso della gilda.",
                     "sub": {
@@ -98,6 +101,14 @@
         "contributors": "Contributori:",
         "dependencies": "Dipendenze:",
         "bulletList": " - "
+    },
+    "oldest": {
+        "title": "Utenti più anziani:",
+        "desc": "Una lista dei membri più anziani della gilda.",
+        "userFormat": "{0}",
+        "userNicknameFormat": "{0} (aka {1})",
+        "dateFormat": "Ha creato l'account il {0}-{1}-{2}",
+        "error": "C'è stato un problema durante la richiesta delle informazioni sui membri di questa gilda."
     },
     "prefix": {
         "set": {

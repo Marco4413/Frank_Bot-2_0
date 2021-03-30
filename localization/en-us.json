@@ -15,6 +15,9 @@
                 "info": {
                     "desc": "Used to get info about the bot."
                 },
+                "oldest": {
+                    "desc": "Used to get a list of the oldest users on this guild."
+                },
                 "prefix": {
                     "desc": "Used to either get or set the guild's prefix.",
                     "sub": {
@@ -98,6 +101,14 @@
         "contributors": "Contributors:",
         "dependencies": "Dependencies:",
         "bulletList": " - "
+    },
+    "oldest": {
+        "title": "Oldest Users:",
+        "desc": "A list of the oldest users on this guild.",
+        "userFormat": "{0}",
+        "userNicknameFormat": "{0} (aka {1})",
+        "dateFormat": "Created account at: {2}-{1}-{0}",
+        "error": "There was an error while trying to retrieve information about all members on this guild."
     },
     "prefix": {
         "set": {
