@@ -7,7 +7,7 @@
   "author": {
     "iconURL": "https://cdn.discordapp.com/avatars/599978506042212364/f9ef158c3169192bcf55ea26bcaf0b0f.png",
     "name": "The author field can also be set to \"me\", \"guild\", \"bot\" or \"ID of someone\"",
-    "url": "https://github.com/hds536jhmk/Frank_Bot-2_0"
+    "url": "https://github.com/Marco4413/Frank_Bot-2_0"
   },
   "color": "#0000ff",
   "description": "The description to the message",
@@ -24,7 +24,7 @@
     }
   ],
   "files": [
-    "https://raw.githubusercontent.com/hds536jhmk/Frank_Bot-2_0/master/README.md"
+    "https://raw.githubusercontent.com/Marco4413/Frank_Bot-2_0/master/README.md"
   ],
   "footer": {
     "iconURL": "guild",
@@ -42,7 +42,7 @@
   },
   "timestamp": "auto",
   "title": "The Title of the Message",
-  "url": "https://github.com/hds536jhmk/Frank_Bot-2_0",
+  "url": "https://github.com/Marco4413/Frank_Bot-2_0",
   "video": {
     "url": "An URL to a video"
   }

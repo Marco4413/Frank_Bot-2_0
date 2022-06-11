@@ -13,15 +13,15 @@
       "nodejs",
       "postgres"
    ],
-   "author": "hds",
+   "author": "Marco4413",
    "license": "MIT",
    "repository": {
       "type": "git",
-      "url": "https://github.com/hds536jhmk/Frank_Bot-2_0.git"
+      "url": "https://github.com/Marco4413/Frank_Bot-2_0.git"
    },
    "contributors": [
       {
-         "name": "hds",
+         "name": "Marco",
          "discordID": "170530017103577089",
          "contribution": "Italiano - Italia : Translation"
       }
